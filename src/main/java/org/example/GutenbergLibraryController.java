@@ -1,4 +1,4 @@
-package org.example.back.repo;
+package org.example;
 
 import org.example.back.local.SearchBookListResponse;
 import org.example.back.remote.LibraryService.Remote.GutendexService;

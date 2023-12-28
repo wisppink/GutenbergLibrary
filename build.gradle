@@ -11,6 +11,12 @@ java {
     sourceCompatibility = '21'
 }
 
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
 repositories {
     mavenCentral()
 }
@@ -22,4 +28,24 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
     implementation 'org.apache.httpcomponents:httpclient:4.5.13'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    compileOnly 'org.projectlombok:lombok'
+    runtimeOnly 'mysql:mysql-connector-java'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine'
+    implementation 'mysql:mysql-connector-java:8.0.28'
+    implementation 'org.webjars:jquery:3.4.1'
+    implementation 'org.webjars:bootstrap:4.3.1'
+    implementation 'org.webjars:webjars-locator-core'
+    implementation 'org.thymeleaf:thymeleaf:3.1.2.RELEASE'
+    implementation("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+}
+test {
+    useJUnitPlatform()
 }

@@ -1,4 +1,4 @@
-package org.example.back.repo;
+package org.example;
 
 import org.example.back.remote.LibraryService.Remote.GutendexService;
 import org.example.back.remote.LibraryService.Remote.LibraryServiceRemoteDataSource;
