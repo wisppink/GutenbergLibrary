@@ -3,18 +3,18 @@ package org.example;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false, unique = true)
     private String email;
-    @Column(nullable = false,length = 64)
+    @Column(nullable = false, length = 64)
     private String password;
-    @Column(nullable = false,unique = true,length = 45)
+    @Column(nullable = false, unique = true, length = 45)
     private String firstName;
-    @Column(nullable = false,unique = true,length = 45)
+    @Column(nullable = false, unique = true, length = 45)
     private String lastName;
 
     public Long getId() {
