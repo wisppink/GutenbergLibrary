@@ -3,6 +3,7 @@ package org.example.LibraryService.Remote;
 import org.example.LibraryService.Remote.Model.Book;
 import org.example.LibraryService.Remote.Model.BookList;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GutendexService {
@@ -13,8 +14,9 @@ public class GutendexService {
         this.remoteDataSource = remoteDataSource;
     }
 
-    public void searchBooks(String queryParameters) {
+    public List<String> searchBooks(String queryParameters) {
         BookList bookList = remoteDataSource.getBookData(queryParameters);
+        List<String> rtrn = new ArrayList<>();
         if (bookList != null) {
             // Now you can work with the parsed BookList object
 
@@ -25,11 +27,14 @@ public class GutendexService {
             List<Book> books = bookList.getResults();
             for (Book book : books) {
                 String title = book.getTitle();
-                System.out.println("Title: " + title);
+                rtrn.add(title);
             }
+            return rtrn;
         } else {
             System.out.println("The API request failed.");
+            rtrn.add("no");
         }
+        return rtrn;
     }
 
 }
