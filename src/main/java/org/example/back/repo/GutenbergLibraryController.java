@@ -1,14 +1,12 @@
-package org.example;
+package org.example.back.repo;
 
-import org.example.LibraryService.Remote.GutendexService;
-import org.example.LibraryService.Remote.LibraryServiceRemoteDataSource;
-import org.example.LibraryService.Remote.Model.Book;
+import org.example.back.local.SearchBookListResponse;
+import org.example.back.remote.LibraryService.Remote.GutendexService;
+import org.example.ui.UiMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 public class GutenbergLibraryController {
@@ -22,12 +20,13 @@ public class GutenbergLibraryController {
 
     @GetMapping("/searchBooks")
     public String searchBooks(@RequestParam(value = "query", defaultValue = "") String query) {
-        List<String> titles = gutendexService.searchBooks(query);
+        UiMapper uiMapper = new UiMapper();
+        SearchBookListResponse response = uiMapper.RemoteToLocalBookList(gutendexService.searchBooks(query));
 
         // Concatenate titles into a single line
         StringBuilder result = new StringBuilder();
-        for (String title : titles) {
-            result.append(title).append(" ");
+        for (int i = 0; i < response.getResults().size(); i++) {
+            result.append(response.getResults().get(i).getTitle());
         }
 
         // Trim the trailing space and return the result
