@@ -1,8 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8191ee2e-88d6-414d-9c54-e5a0526a825d" name="Changes" comment="WE CAN SEE THE TITLES OF THE BOOKS ON THE WEB PAGE LOOOOOL">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/back/local/SearchBookListResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/back/local/SearchBookResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/back/remote/LibraryService/Remote/LibraryServiceRemoteDataSource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/UiMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/back/repo/AppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GutenbergLibraryApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/back/repo/GutenbergLibraryApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GutenbergLibraryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/back/repo/GutenbergLibraryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryService/Remote/GutendexService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/back/remote/LibraryService/Remote/GutendexService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryService/Remote/LibraryServiceRemoteDataSource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryService/Remote/LibraryServiceRemoteDataSourceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/back/remote/LibraryService/Remote/LibraryServiceRemoteDataSourceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryService/Remote/Model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/back/remote/LibraryService/Remote/Model/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryService/Remote/Model/BookList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/back/remote/LibraryService/Remote/Model/BookList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryService/Remote/Model/Format.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/back/remote/LibraryService/Remote/Model/Format.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryService/Remote/Model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/back/remote/LibraryService/Remote/Model/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryService/Remote/Model/ServiceError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/back/remote/LibraryService/Remote/Model/ServiceError.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/back/repo/Main.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "wisppink"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="recentNewPullRequestHead">
+      <RepoCoordinatesHolder>
+        <option name="owner" value="wisppink" />
+        <option name="repository" value="GutenbergLibrary" />
+      </RepoCoordinatesHolder>
+    </option>
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="9d248328-0fc6-437a-bb30-b0bee5f9cd81" />
+        <option name="url" value="https://github.com/wisppink/GutenbergLibrary.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="2aAcq6kod44xPRBpJX8JnucJ5pg" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showMembers" value="true" />
     <option name="showModules" value="false" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "Sude",
+    "kotlin-language-version-configured": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.example.ui" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.1-openjdk-21.0.1-f644763e9732-f98dd351" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8191ee2e-88d6-414d-9c54-e5a0526a825d" name="Changes" comment="" />
+      <created>1703765013707</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1703765013707</updated>
+    </task>
+    <task id="LOCAL-00001" summary="server works!!">
+      <option name="closed" value="true" />
+      <created>1703765285573</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1703765285573</updated>
+    </task>
+    <task id="LOCAL-00002" summary="WE CAN SEE THE TITLES OF THE BOOKS ON THE WEB PAGE LOOOOOL">
+      <option name="closed" value="true" />
+      <created>1703766100558</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1703766100558</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="server works!!" />
+    <MESSAGE value="WE CAN SEE THE TITLES OF THE BOOKS ON THE WEB PAGE LOOOOOL" />
+    <option name="LAST_COMMIT_MESSAGE" value="WE CAN SEE THE TITLES OF THE BOOKS ON THE WEB PAGE LOOOOOL" />
   </component>
 </project>

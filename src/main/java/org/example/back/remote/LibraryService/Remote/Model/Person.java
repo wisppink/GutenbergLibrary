@@ -1,4 +1,4 @@
-package org.example.LibraryService.Remote.Model;
+package org.example.back.remote.LibraryService.Remote.Model;
 
 public class Person {
     public Integer birth_year;

@@ -1,7 +1,7 @@
-package org.example.LibraryService.Remote;
+package org.example.back.remote.LibraryService.Remote;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.LibraryService.Remote.Model.BookList;
+import org.example.back.remote.LibraryService.Remote.Model.BookList;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -37,8 +37,7 @@ public class LibraryServiceRemoteDataSourceImp implements LibraryServiceRemoteDa
                 // Check if the request was successful (status code 200)
                 if (response.statusCode() == 200) {
                     // Parse the JSON response into the BookList class
-                    BookList bookList = parseJsonResponse(response.body(), BookList.class);
-                    return bookList;
+                    return parseJsonResponse(response.body(), BookList.class);
                 } else if (response.statusCode() == 301) {
                     // Handle redirect by extracting the new location from the "Location" header
                     String newLocation = response.headers().firstValue("Location").orElse(null);
