@@ -1,8 +1,8 @@
 package org.example.ui;
 
-import org.example.service.searchApi.local.SearchBookListResponse;
-import org.example.service.searchApi.local.SearchBookResponse;
-import org.example.service.searchApi.remote.LibraryService.Remote.Model.BookList;
+import org.example.service.Model.BookList;
+import org.example.service.local.SearchBookListResponse;
+import org.example.service.local.SearchBookResponse;
 
 import java.util.ArrayList;
 import java.util.List;

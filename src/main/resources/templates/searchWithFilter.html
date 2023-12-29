@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Books With Filter</title>
+</head>
+<body>
+
+<h2>Search Books With Filter</h2>
+
+<form action="/books/searchBooksWithFilter" th:action="@{/books/searchBooksWithFilter}" method="get">
+    <label for="filterType">Filter Type:</label>
+    <select id="filterType" name="filterType" required>
+        <option value="0">Books with Author Alive in a Given Range of Years</option>
+        <option value="1">Books with a Certain Copyright Status</option>
+        <option value="2">Books with Project Gutenberg ID Numbers in a Given List</option>
+        <option value="3">Books in Any of a List of Languages</option>
+        <option value="4">Books with a Given MIME Type</option>
+        <option value="5">Search Author Names and Book Titles with Given Words</option>
+        <option value="6">Sort Books</option>
+        <option value="7">Search for a Case-Insensitive Key-Phrase in Books' Bookshelves or Subjects</option>
+    </select>
+    <br>
+
+    <label for="filterParam">Filter Parameter:</label>
+    <input type="text" id="filterParam" name="filterType" required>
+    <br>
+
+    <div class="form-group mb-3">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
+
+</body>
+</html>

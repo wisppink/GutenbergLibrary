@@ -17,7 +17,7 @@ import java.util.List;
 @Controller
 public class AuthController {
 
-    private UserService userService;
+    private final UserService userService;
 
     public AuthController(UserService userService) {
         this.userService = userService;
@@ -70,6 +70,6 @@ public class AuthController {
     // handler method to handle login request
     @GetMapping("/login")
     public String login() {
-        return "login";
+        return "/login";
     }
 }

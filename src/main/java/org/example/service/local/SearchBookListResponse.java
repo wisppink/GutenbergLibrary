@@ -1,4 +1,4 @@
-package org.example.service.searchApi.local;
+package org.example.service.local;
 
 import java.util.List;
 

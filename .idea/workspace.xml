@@ -4,44 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8191ee2e-88d6-414d-9c54-e5a0526a825d" name="Changes" comment="unused imports deleted">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/config/SpringSecurity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/AuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/dto/UserDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/entity/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/RoleRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/security/CustomUserDetailsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/service/imp/UserServiceImp.java" afterDir="false" />
+    <list default="true" id="8191ee2e-88d6-414d-9c54-e5a0526a825d" name="Changes" comment="spring boot">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/GutendexController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/searchWithFilter.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/AppConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/AppController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CustomUserDetailService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CustomUserDetails.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GutenbergLibraryApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GutenbergLibraryApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GutenbergLibraryController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WebSecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/back/local/SearchBookListResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/local/SearchBookListResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/back/local/SearchBookResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/local/SearchBookResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/back/remote/LibraryService/Remote/GutendexService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/GutendexService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/back/remote/LibraryService/Remote/LibraryServiceRemoteDataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/LibraryServiceRemoteDataSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/back/remote/LibraryService/Remote/LibraryServiceRemoteDataSourceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/LibraryServiceRemoteDataSourceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/back/remote/LibraryService/Remote/Model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/Model/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/back/remote/LibraryService/Remote/Model/BookList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/Model/BookList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/back/remote/LibraryService/Remote/Model/Format.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/Model/Format.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/back/remote/LibraryService/Remote/Model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/Model/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/back/remote/LibraryService/Remote/Model/ServiceError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/Model/ServiceError.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/config/SpringSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/config/SpringSecurity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/local/SearchBookListResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/local/SearchBookListResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/local/SearchBookResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/local/SearchBookResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/GutendexService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/GutendexService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/LibraryServiceRemoteDataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/remote/LibraryServiceRemoteDataSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/LibraryServiceRemoteDataSourceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/imp/LibraryServiceRemoteDataSourceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/Model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Model/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/Model/BookList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Model/BookList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/Model/Format.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Model/Format.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/Model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Model/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/Model/ServiceError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Model/ServiceError.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ui/UiMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/UiMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/signup_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/users.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/UserRepositoryTests.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,8 +62,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="HTML File" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -251,7 +231,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703768512256</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="spring boot">
+      <option name="closed" value="true" />
+      <created>1703866304217</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1703866304217</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -265,11 +253,26 @@
     <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
     <option featureType="dependencySupport" implementationName="java:org.projectlombok:lombok" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <MESSAGE value="server works!!" />
     <MESSAGE value="WE CAN SEE THE TITLES OF THE BOOKS ON THE WEB PAGE LOOOOOL" />
     <MESSAGE value="Local map" />
-    <option name="LAST_COMMIT_MESSAGE" value="Local map" />
+    <MESSAGE value="spring boot" />
+    <option name="LAST_COMMIT_MESSAGE" value="spring boot" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/GutenbergLibrary$UserRepositoryTests.ic" NAME="UserRepositoryTests Coverage Results" MODIFIED="1703781156369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

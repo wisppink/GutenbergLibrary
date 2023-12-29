@@ -1,4 +1,4 @@
-package org.example.service.searchApi.remote.LibraryService.Remote.Model;
+package org.example.service.Model;
 
 public class Person {
     public Integer birth_year;

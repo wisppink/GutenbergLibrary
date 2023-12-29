@@ -1,11 +1,8 @@
-package org.example.service.searchApi.local;
-
-import org.example.service.searchApi.remote.LibraryService.Remote.Model.Format;
-import org.example.service.searchApi.remote.LibraryService.Remote.Model.Person;
+package org.example.service.Model;
 
 import java.util.List;
 
-public class SearchBookResponse {
+public class Book {
     public int id;
     public String title;
     public List<String> subjects;

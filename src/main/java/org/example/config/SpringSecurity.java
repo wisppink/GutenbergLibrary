@@ -1,6 +1,8 @@
 package org.example.config;
 
 
+import org.example.service.GutendexService;
+import org.example.service.imp.LibraryServiceRemoteDataSourceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
@@ -39,11 +41,13 @@ public class SpringSecurity {
                         authorize.requestMatchers("/register/**").permitAll()
                                 .requestMatchers("/index").permitAll()
                                 .requestMatchers("/users").authenticated()
+                                .requestMatchers("/books/search").authenticated()
+                                .requestMatchers("/books/searchBooksWithFilter").authenticated()
+                                .requestMatchers("/books/**").authenticated()
                 ).formLogin(
                         form -> form
                                 .loginPage("/login")
-                                .loginProcessingUrl("/login")
-                                .defaultSuccessUrl("/users")
+                                .defaultSuccessUrl("/index", true)
                                 .permitAll()
                 ).logout(
                         logout -> logout
@@ -53,8 +57,6 @@ public class SpringSecurity {
 
         http.exceptionHandling(config -> config
                 .authenticationEntryPoint((request, response, authException) -> {
-                    // Log authentication failures
-                    // You can add more detailed logging here
                     System.out.println("Authentication failure: " + authException.getMessage());
                     response.sendRedirect("/login?error");
                 }));
@@ -68,5 +70,10 @@ public class SpringSecurity {
         auth
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder());
+    }
+
+    @Bean
+    public GutendexService gutendexService() {
+        return new GutendexService(new LibraryServiceRemoteDataSourceImp());
     }
 }

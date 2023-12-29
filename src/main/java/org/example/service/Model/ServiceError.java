@@ -1,4 +1,4 @@
-package org.example.service.searchApi.remote.LibraryService.Remote.Model;
+package org.example.service.Model;
 
 public class ServiceError {
     public String detail;
