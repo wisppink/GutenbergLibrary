@@ -4,31 +4,44 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8191ee2e-88d6-414d-9c54-e5a0526a825d" name="Changes" comment="Local map">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/AppController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/CustomUserDetailService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/CustomUserDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/WebSecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/dashboard.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/register_success.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/signup_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/users.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/UserRepositoryTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="8191ee2e-88d6-414d-9c54-e5a0526a825d" name="Changes" comment="unused imports deleted">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/config/SpringSecurity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/dto/UserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/entity/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/RoleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/security/CustomUserDetailsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/service/imp/UserServiceImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/back/repo/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/AppConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/back/repo/GutenbergLibraryApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GutenbergLibraryApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/back/repo/GutenbergLibraryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GutenbergLibraryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/back/repo/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/AppConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/AppController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CustomUserDetailService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CustomUserDetails.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GutenbergLibraryApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GutenbergLibraryApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GutenbergLibraryController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WebSecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/back/local/SearchBookListResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/local/SearchBookListResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/back/local/SearchBookResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/local/SearchBookResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/back/remote/LibraryService/Remote/GutendexService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/GutendexService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/back/remote/LibraryService/Remote/LibraryServiceRemoteDataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/LibraryServiceRemoteDataSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/back/remote/LibraryService/Remote/LibraryServiceRemoteDataSourceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/LibraryServiceRemoteDataSourceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/back/remote/LibraryService/Remote/Model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/Model/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/back/remote/LibraryService/Remote/Model/BookList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/Model/BookList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/back/remote/LibraryService/Remote/Model/Format.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/Model/Format.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/back/remote/LibraryService/Remote/Model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/Model/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/back/remote/LibraryService/Remote/Model/ServiceError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/Model/ServiceError.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ui/UiMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/UiMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/signup_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/users.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/UserRepositoryTests.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,8 +82,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -109,28 +122,29 @@
     <option name="showMembers" value="true" />
     <option name="showModules" value="false" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Gradle.Build GutenbergLibrary.executor": "Run",
-    "Gradle.GutenbergLibrary [:PasswordEncoder.main()].executor": "Run",
-    "Gradle.GutenbergLibrary.executor": "Run",
-    "Gradle.UserRepositoryTests.executor": "Run",
-    "Gradle.UserRepositoryTests.testCreateUser.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Sude",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Sude/IdeaProjects/GutenbergLibrary/src/main/resources/templates",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.38965517",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Gradle.Build GutenbergLibrary.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.GutenbergLibrary [:PasswordEncoder.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.GutenbergLibrary.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.UserRepositoryTests.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.UserRepositoryTests.testCreateUser.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Sude&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Sude/IdeaProjects/GutenbergLibrary/src/main/resources/templates&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.38965517&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.example.service" />
       <recent name="org.example.ui" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -141,7 +155,7 @@
       <recent name="C:\Users\Sude\IdeaProjects\GutenbergLibrary\src\main\resources\static" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Gradle.UserRepositoryTests">
     <configuration name="UserRepositoryTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -239,6 +253,17 @@
     </task>
     <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.security:spring-security-core" />
+    <option featureType="dependencySupport" implementationName="java:com.google.protobuf:protobuf-java" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.persistence:jakarta.persistence-api" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
+    <option featureType="dependencySupport" implementationName="java:org.thymeleaf:thymeleaf" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
+    <option featureType="dependencySupport" implementationName="java:org.projectlombok:lombok" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="server works!!" />
