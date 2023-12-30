@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8191ee2e-88d6-414d-9c54-e5a0526a825d" name="Changes" comment="updated switch case">
+    <list default="true" id="8191ee2e-88d6-414d-9c54-e5a0526a825d" name="Changes" comment="updated switch case labels">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/entity/LibBook.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mapper/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/service/LibBookService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/service/imp/LibBookServiceImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/books/library.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/books/searchFilterInput.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/books/searchFilterInput.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/GutendexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/GutendexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entity/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +116,7 @@
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.example.service" />
+      <recent name="org.example.entity" />
       <recent name="org.example.ui" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -265,7 +272,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703972085005</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="updated switch case labels">
+      <option name="closed" value="true" />
+      <created>1703972441876</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1703972441876</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -301,7 +316,8 @@
     <MESSAGE value="tested with int:3 param:en&#10;it works" />
     <MESSAGE value="user authenticated" />
     <MESSAGE value="updated switch case" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated switch case" />
+    <MESSAGE value="updated switch case labels" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated switch case labels" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

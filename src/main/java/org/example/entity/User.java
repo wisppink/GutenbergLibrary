@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,12 +26,23 @@ public class User {
     private String email;
     @Column(nullable = false)
     private String password;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "user_id")
+    private List<LibBook> books;
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "users_roles",
             joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(name = "ROLE_ID", referencedColumnName = "ID")})
     private List<Role> roles = new ArrayList<>();
+
+    public List<LibBook> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<LibBook> books) {
+        this.books = books;
+    }
 
     public Long getId() {
         return id;
