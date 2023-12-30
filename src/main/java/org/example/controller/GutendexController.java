@@ -37,20 +37,31 @@ public class GutendexController {
     }
 
     @GetMapping("/searchBooksWithFilter")
-    public String getSearchFilterInput() {
+    public String getSearchFilterInput(Model model, Authentication authentication) {
+        if (authentication != null && authentication.isAuthenticated()) {
+            String username = authentication.getName();
+            model.addAttribute("username", username);
+            logger.info("searchFilterInput: {}", username);
+        }
         return "books/searchFilterInput";
     }
 
     @PostMapping("/searchBooksWithFilter")
-    public String handleSearchForm(@RequestParam int switchCase, @RequestParam String inputString, HttpSession session) {
+    public String handleSearchForm(Model model, @RequestParam int switchCase, @RequestParam String inputString, HttpSession session, Authentication authentication) {
         session.setAttribute("switchCase", switchCase);
         session.setAttribute("inputString", inputString);
+        // Add authenticated user information if available
+        if (authentication != null && authentication.isAuthenticated()) {
+            String username = authentication.getName();
+            model.addAttribute("username", username);
+            logger.info("searchBooksWithFilter: {}", username);
+        }
         return "redirect:/books/results";
     }
 
 
     @GetMapping("/results")
-    public String showResults(Model model, HttpSession session) {
+    public String showResults(Model model, HttpSession session, Authentication authentication) {
         // Retrieve form data from the session
         int switchCase = (int) session.getAttribute("switchCase");
         String inputString = (String) session.getAttribute("inputString");
@@ -62,8 +73,16 @@ public class GutendexController {
         model.addAttribute("switchCase", switchCase);
         model.addAttribute("inputString", inputString);
 
+        // Add authenticated user information if available
+        if (authentication != null && authentication.isAuthenticated()) {
+            String username = authentication.getName();
+            model.addAttribute("username", username);
+            logger.info("User authenticated: {}", username);
+        }
+
         // Render the results page
         return "books/results";
     }
+
 
 }

@@ -9,6 +9,8 @@
 <body>
 <h1>Search Book with Filter</h1>
 
+<p>User: <span th:text="${username}"></span></p>
+
 <form th:action="@{/books/searchBooksWithFilter}" method="post">
     <label for="switchCase">Switch Case Scenario:</label>
     <input type="number" id="switchCase" name="switchCase" required>
