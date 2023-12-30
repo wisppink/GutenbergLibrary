@@ -1,16 +1,17 @@
 package org.example.controller;
 
+import jakarta.servlet.http.HttpSession;
 import org.example.service.GutendexService;
 import org.example.service.Model.BookList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class GutendexController {
 
     private final GutendexService gutendexService;
+    private static final Logger logger = LoggerFactory.getLogger(GutendexController.class);
 
     @Autowired
     public GutendexController(GutendexService gutendexService) {
@@ -29,18 +31,39 @@ public class GutendexController {
         if (authentication != null && authentication.isAuthenticated()) {
             String username = authentication.getName();
             model.addAttribute("username", username);
-            System.out.println(model.getAttribute("username"));
+            logger.info("User authenticated: {}", username);
         }
         return gutendexService.searchBooks();
     }
 
-    @RequestMapping(value = "/searchBooksWithFilter", method = RequestMethod.GET)
-    public ResponseEntity<BookList> searchBooksWithFilter(
-            @RequestParam(name = "filterType", defaultValue = "0") int filterType,
-            @RequestParam(name = "filterParam", defaultValue = "") String filterParam) {
+    @GetMapping("/searchBooksWithFilter")
+    public String getSearchFilterInput() {
+        return "books/searchFilterInput";
+    }
 
-        BookList result = gutendexService.searchBooksWithFilter(filterType, filterParam);
-        return new ResponseEntity<>(result, HttpStatus.OK);
+    @PostMapping("/searchBooksWithFilter")
+    public String handleSearchForm(@RequestParam int switchCase, @RequestParam String inputString, HttpSession session) {
+        session.setAttribute("switchCase", switchCase);
+        session.setAttribute("inputString", inputString);
+        return "redirect:/books/results";
+    }
+
+
+    @GetMapping("/results")
+    public String showResults(Model model, HttpSession session) {
+        // Retrieve form data from the session
+        int switchCase = (int) session.getAttribute("switchCase");
+        String inputString = (String) session.getAttribute("inputString");
+
+        // Invoke the service method and get the results
+        BookList searchResults = gutendexService.searchBooksWithFilter(switchCase, inputString);
+
+        model.addAttribute("searchResults", searchResults);
+        model.addAttribute("switchCase", switchCase);
+        model.addAttribute("inputString", inputString);
+
+        // Render the results page
+        return "books/results";
     }
 
 }

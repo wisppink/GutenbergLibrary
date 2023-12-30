@@ -1,0 +1,22 @@
+<!-- src/main/resources/templates/books/searchFilterInput.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Book with Filter</title>
+</head>
+<body>
+<h1>Search Book with Filter</h1>
+
+<form th:action="@{/books/searchBooksWithFilter}" method="post">
+    <label for="switchCase">Switch Case Scenario:</label>
+    <input type="number" id="switchCase" name="switchCase" required>
+
+    <label for="inputString">Input String:</label>
+    <input type="text" id="inputString" name="inputString" required>
+
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
