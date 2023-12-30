@@ -4,24 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8191ee2e-88d6-414d-9c54-e5a0526a825d" name="Changes" comment="spring boot">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/GutendexController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/searchWithFilter.html" afterDir="false" />
+    <list default="true" id="8191ee2e-88d6-414d-9c54-e5a0526a825d" name="Changes" comment="without user input, filter search works with default filter type and filter param">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/books/search.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/config/SpringSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/config/SpringSecurity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/local/SearchBookListResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/local/SearchBookListResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/local/SearchBookResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/local/SearchBookResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/GutendexService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/GutendexService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/LibraryServiceRemoteDataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/remote/LibraryServiceRemoteDataSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/LibraryServiceRemoteDataSourceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/imp/LibraryServiceRemoteDataSourceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/Model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Model/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/Model/BookList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Model/BookList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/Model/Format.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Model/Format.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/Model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Model/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/searchApi/remote/LibraryService/Remote/Model/ServiceError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Model/ServiceError.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ui/UiMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/UiMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/GutendexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/GutendexController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,6 +117,7 @@
       <recent name="C:\Users\Sude\IdeaProjects\GutenbergLibrary\src\main\resources\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Sude\IdeaProjects\GutenbergLibrary\src\main\resources\templates\books" />
       <recent name="C:\Users\Sude\IdeaProjects\GutenbergLibrary\src\main\resources\templates" />
       <recent name="C:\Users\Sude\IdeaProjects\GutenbergLibrary\src\main\resources\static" />
     </key>

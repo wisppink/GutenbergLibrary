@@ -5,9 +5,16 @@ import org.example.service.Model.BookList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-@RestController
+@Controller
 @RequestMapping("/books")
 public class GutendexController {
 
@@ -19,7 +26,13 @@ public class GutendexController {
     }
 
     @GetMapping("/search")
-    public BookList searchBooks() {
+    public BookList searchBooks(Model model) {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        // Now 'username' contains the username of the currently authenticated user
+        model.addAttribute("username", username);
+        System.out.println(model.getAttribute("username"));
         return gutendexService.searchBooks();
     }
 
