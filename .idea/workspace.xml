@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8191ee2e-88d6-414d-9c54-e5a0526a825d" name="Changes" comment="tested with int:3 param:en&#10;it works">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/GutendexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/GutendexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/books/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/books/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/books/searchFilterInput.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/books/searchFilterInput.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/searchWithFilter.html" beforeDir="false" />
-    </list>
+    <list default="true" id="8191ee2e-88d6-414d-9c54-e5a0526a825d" name="Changes" comment="user authenticated" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -252,7 +246,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703970940594</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="user authenticated">
+      <option name="closed" value="true" />
+      <created>1703971803668</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1703971803668</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -286,7 +288,8 @@
     <MESSAGE value="book search authenticated and works!!!!!" />
     <MESSAGE value="authentication check" />
     <MESSAGE value="tested with int:3 param:en&#10;it works" />
-    <option name="LAST_COMMIT_MESSAGE" value="tested with int:3 param:en&#10;it works" />
+    <MESSAGE value="user authenticated" />
+    <option name="LAST_COMMIT_MESSAGE" value="user authenticated" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

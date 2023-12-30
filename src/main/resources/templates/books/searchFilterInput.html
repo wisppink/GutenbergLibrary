@@ -13,7 +13,16 @@
 
 <form th:action="@{/books/searchBooksWithFilter}" method="post">
     <label for="switchCase">Switch Case Scenario:</label>
-    <input type="number" id="switchCase" name="switchCase" required>
+    <select id="switchCase" name="switchCase" required>
+        <option value="0">Books with Author Alive in a Given Range of Years</option>
+        <option value="1">Books with a Certain Copyright Status</option>
+        <option value="2">Books with Project Gutenberg ID Numbers in a Given List</option>
+        <option value="3">Books in Any of a List of Languages</option>
+        <option value="4">Books with a Given MIME Type</option>
+        <option value="5">Search Author Names and Book Titles with Given Words</option>
+        <option value="6">Sort Books</option>
+        <option value="7">Search for a Case-Insensitive Key-Phrase in Books' Bookshelves or Subjects</option>
+    </select>
 
     <label for="inputString">Input String:</label>
     <input type="text" id="inputString" name="inputString" required>
