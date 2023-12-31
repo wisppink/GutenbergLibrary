@@ -161,7 +161,7 @@ public class GutendexController {
             user.getBooks().removeIf(book -> book.getId().equals(bookId));
 
             // Save the updated user entity
-            userService.saveUser(userMapper.mapToDto(user));
+            userService.updateUserLibrary(userMapper.mapToDto(user));
 
             return "redirect:/books/library";
         } else {
