@@ -18,6 +18,10 @@
             <input type="hidden" name="bookId" th:value="${book.id}"/>
             <button type="submit">Remove from Library</button>
         </form>
+        <form th:action="@{/books/readTheBook}" method="post">
+            <input type="hidden" name="bookID" th:value="${book.id}"/>
+            <button type="submit" th:text="'Read ' + ${book.title}">Read</button>
+        </form>
     </li>
 </ul>
 

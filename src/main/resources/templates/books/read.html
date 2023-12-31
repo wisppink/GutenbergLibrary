@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Book</title>
+</head>
+<body>
+
+<div>
+    <!-- Display the content of the current page -->
+    <p th:text="${currentPageContent}"></p>
+</div>
+
+<div>
+    <form th:action="@{/books/nextPage}" method="post">
+        <button type="submit">Next Page</button>
+    </form>
+    <form th:action="@{/books/previousPage}" method="post">
+        <button type="submit">Previous Page</button>
+    </form>
+
+</div>
+
+</body>
+</html>

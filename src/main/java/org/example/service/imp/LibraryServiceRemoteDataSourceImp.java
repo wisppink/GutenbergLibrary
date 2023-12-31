@@ -10,10 +10,14 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.logging.Logger;
 
 @Service
 public class LibraryServiceRemoteDataSourceImp implements LibraryServiceRemoteDataSource {
     private final String baseUrl;
+
+    Logger logger = Logger.getLogger(LibraryServiceRemoteDataSourceImp.class.getName());
+
 
     public LibraryServiceRemoteDataSourceImp() {
         this.baseUrl = "https://gutendex.com/books/";
@@ -155,17 +159,19 @@ public class LibraryServiceRemoteDataSourceImp implements LibraryServiceRemoteDa
         try (HttpClient client = HttpClient.newHttpClient()) {
             // Create an HttpRequest to the API URL for a specific book
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(baseUrl + "?id=" + bookId))
+                    .uri(URI.create(baseUrl + "?ids=" + bookId))
                     .GET()
                     .build();
 
             // Send the request and get the response
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
+            logger.info(response.body());
             // Check if the request was successful (status code 200)
             if (response.statusCode() == 200) {
                 // Parse the JSON response into the Book class
-                Book book = parseJsonResponse(response.body(), Book.class);
+                BookList response1 = parseJsonResponse(response.body(), BookList.class);
+                Book book = response1.getResults().getFirst();
+                logger.info("service after remote data source: " + book.getTitle());
                 book.setId(Math.toIntExact(bookId));
                 return book;
             } else if (response.statusCode() == 404) {
