@@ -4,15 +4,17 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.entity.LibBook;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+
+import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDto
-{
+public class UserDto {
     private Long id;
     @NotEmpty
     private String firstName;
@@ -23,6 +25,15 @@ public class UserDto
     private String email;
     @NotEmpty(message = "Password should not be empty")
     private String password;
+    private List<LibBook> books;
+
+    public List<LibBook> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<LibBook> books) {
+        this.books = books;
+    }
 
     public Long getId() {
         return id;

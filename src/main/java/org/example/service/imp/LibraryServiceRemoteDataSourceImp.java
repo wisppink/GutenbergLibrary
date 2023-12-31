@@ -1,6 +1,7 @@
 package org.example.service.imp;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.example.service.Model.Book;
 import org.example.service.Model.BookList;
 import org.example.service.remote.LibraryServiceRemoteDataSource;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,7 @@ public class LibraryServiceRemoteDataSourceImp implements LibraryServiceRemoteDa
     }
 
     @Override
-    public BookList getBooklistDefault() {
+    public BookList getBookListDefault() {
         try {
             // Create an instance of HttpClient
             try (HttpClient client = HttpClient.newHttpClient()) {
@@ -108,7 +109,7 @@ public class LibraryServiceRemoteDataSourceImp implements LibraryServiceRemoteDa
                     filter = "topic=" + param;
                     break;
                 default:
-                    getBooklistDefault();
+                    getBookListDefault();
             }
 
             HttpRequest request = HttpRequest.newBuilder()
@@ -148,4 +149,36 @@ public class LibraryServiceRemoteDataSourceImp implements LibraryServiceRemoteDa
 
         return null; // You might want to return something meaningful here
     }
+
+    @Override
+    public Book getBookDetail(Long bookId) {
+        try (HttpClient client = HttpClient.newHttpClient()) {
+            // Create an HttpRequest to the API URL for a specific book
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(baseUrl + "?id=" + bookId))
+                    .GET()
+                    .build();
+
+            // Send the request and get the response
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            // Check if the request was successful (status code 200)
+            if (response.statusCode() == 200) {
+                // Parse the JSON response into the Book class
+                Book book = parseJsonResponse(response.body(), Book.class);
+                book.setId(Math.toIntExact(bookId));
+                return book;
+            } else if (response.statusCode() == 404) {
+                // Handle the case where the book with the given ID is not found
+                System.out.println("Error: Book not found with ID " + bookId);
+            } else {
+                System.out.println("Error: HTTP request failed with status code " + response.statusCode());
+            }
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+
+        return null; // You might want to return something meaningful here
+    }
+
 }

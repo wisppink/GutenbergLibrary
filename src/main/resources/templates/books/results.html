@@ -15,6 +15,7 @@
 <!-- Display search results -->
 <ul th:if="${searchResults.results.size() > 0}">
     <li th:each="result : ${searchResults.results}">
+        <p><strong>Book ID:</strong> <span th:text="${result.id}"></span></p>
         <p><strong>Title:</strong> <span th:text="${result.title}"></span></p>
         <p><strong>Authors:</strong>
             <span th:each="author : ${result.authors}" th:text="${author.name} + ', '"></span>
@@ -32,14 +33,12 @@
         <p><strong>Media Type:</strong> <span th:text="${result.media_type}"></span></p>
         <p><strong>Download Count:</strong> <span th:text="${result.download_count}"></span></p>
 
-        <!-- Add more details as needed -->
-
-        <!-- Line break between books -->
+        <form th:action="@{/books/addToLibrary}" method="post">
+            <input type="hidden" name="bookId" th:value="${result.id}"/>
+            <button type="submit">Add to Library</button>
+        </form>
         <hr/>
     </li>
 </ul>
-
-<!-- Debugging: Display the structure of searchResults -->
-<pre th:text="${#strings.toString(searchResults)}"></pre>
 </body>
 </html>

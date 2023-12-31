@@ -13,8 +13,7 @@
 <!-- Display user's library -->
 <ul>
     <li th:each="book : ${library}">
-        <span th:text="${book.title}"></span> -
-        <span th:each="author : ${book.authors}" th:text="${author.name}"></span>
+        <span th:text="${book.url}"></span> -
         <form th:action="@{/books/removeFromLibrary}" method="post">
             <input type="hidden" name="bookId" th:value="${book.id}"/>
             <button type="submit">Remove from Library</button>

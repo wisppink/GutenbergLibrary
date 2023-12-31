@@ -1,7 +1,10 @@
 package org.example.service.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Book {
     public int id;
     public String title;
@@ -16,6 +19,8 @@ public class Book {
     public int download_count;
 
     public int getId() {
+
+        System.out.println("book id: " + id);
         return id;
     }
 

@@ -1,5 +1,6 @@
 package org.example.service.imp;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.example.dto.UserDto;
 import org.example.entity.Role;
 import org.example.entity.User;
@@ -8,17 +9,18 @@ import org.example.repository.UserRepository;
 import org.example.service.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImp implements UserService {
 
-    private UserRepository userRepository;
-    private RoleRepository roleRepository;
-    private PasswordEncoder passwordEncoder;
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public UserServiceImp(UserRepository userRepository,
                           RoleRepository roleRepository,
@@ -40,7 +42,7 @@ public class UserServiceImp implements UserService {
         if (role == null) {
             role = checkRoleExist();
         }
-        user.setRoles(Arrays.asList(role));
+        user.setRoles(List.of(role));
         userRepository.save(user);
     }
 
@@ -70,5 +72,23 @@ public class UserServiceImp implements UserService {
         Role role = new Role();
         role.setName("ROLE_ADMIN");
         return roleRepository.save(role);
+    }
+
+    @Transactional
+    public void updateUserLibrary(UserDto updatedUserDto) {
+        // Check if the user with the provided ID exists
+        Optional<User> optionalUser = userRepository.findById(updatedUserDto.getId());
+
+        if (optionalUser.isPresent()) {
+            // Update the user's library
+            User existingUser = optionalUser.get();
+            existingUser.setBooks(updatedUserDto.getBooks());
+
+            // Save the updated user entity
+            userRepository.save(existingUser);
+        } else {
+            // Handle the case where the user with the provided ID is not found
+            throw new EntityNotFoundException("User not found with ID: " + updatedUserDto.getId());
+        }
     }
 }

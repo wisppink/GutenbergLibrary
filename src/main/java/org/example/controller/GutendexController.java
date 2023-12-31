@@ -1,11 +1,13 @@
 package org.example.controller;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import jakarta.servlet.http.HttpSession;
+import org.example.dto.UserDto;
 import org.example.entity.LibBook;
 import org.example.entity.User;
 import org.example.mapper.UserMapper;
 import org.example.service.GutendexService;
-import org.example.service.LibBookService;
 import org.example.service.Model.BookList;
 import org.example.service.UserService;
 import org.slf4j.Logger;
@@ -13,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,14 +31,14 @@ public class GutendexController {
     private static final Logger logger = LoggerFactory.getLogger(GutendexController.class);
     private final GutendexService gutendexService;
     private final UserService userService;
-    private final LibBookService libBookService;
     private final UserMapper userMapper;
+    @PersistenceContext
+    EntityManager entityManager;
 
     @Autowired
-    public GutendexController(GutendexService gutendexService, UserService userService, LibBookService libBookService, UserMapper userMapper) {
+    public GutendexController(GutendexService gutendexService, UserService userService, UserMapper userMapper) {
         this.gutendexService = gutendexService;
         this.userService = userService;
-        this.libBookService = libBookService;
         this.userMapper = userMapper;
     }
 
@@ -117,7 +120,7 @@ public class GutendexController {
         }
     }
 
-    // Controller method to add a book to the user's library
+    @Transactional
     @PostMapping("/addToLibrary")
     public String addToLibrary(@RequestParam Long bookId, Authentication authentication) {
         // Retrieve the authenticated user
@@ -126,22 +129,23 @@ public class GutendexController {
 
             // Fetch the user from the database
             User user = userService.findUserByEmail(username);
-
             // Fetch the book from the database (or any other data source)
-            LibBook book = libBookService.getBookById(bookId);
+            LibBook book = gutendexService.getBookDetails(bookId);
 
-            // Add the book to the user's library
-            user.getBooks().add(book);
-
-            // Save the updated user entity
-            userService.saveUser(userMapper.mapToDto(user));
-
+            LibBook attachedBook = entityManager.merge(book);
+            logger.info("book url: " + book.getUrl());
+            logger.info("before add: " + user.getBooks());
+            user.getBooks().add(attachedBook);
+            logger.info("after add: " + user.getBooks());
+            UserDto userDto = userMapper.mapToDto(user);
+            userService.updateUserLibrary(userDto);
             return "redirect:/books/library";
         } else {
             // Redirect to the login page or handle as appropriate
             return "redirect:/login";
         }
     }
+
 
     // Controller method to remove a book from the user's library
     @PostMapping("/removeFromLibrary")
