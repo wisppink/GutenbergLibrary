@@ -1,0 +1,24 @@
+<!-- src/main/resources/templates/books/search.html -->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Search</title>
+</head>
+<body>
+<h1>Book Search</h1>
+<p>User: <span th:text="${username}"></span></p>
+<!-- Your Thymeleaf template content goes here -->
+<!-- For example, you can display the list of books -->
+
+<ul>
+    <li th:each="book : ${bookList.results}">
+        <span th:text="${book.title}"></span> -
+        <span th:each="author : ${book.authors}" th:text="${author.name}"></span>
+    </li>
+</ul>
+
+</body>
+</html>

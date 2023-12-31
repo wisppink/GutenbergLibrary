@@ -1,0 +1,44 @@
+<!-- src/main/resources/templates/books/results.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+</head>
+<body>
+<h1>Search Results</h1>
+<p>User: <span th:text="${username}"></span></p>
+<p>Switch Case Scenario: <span th:text="${switchCase}"></span></p>
+<p>Input String: <span th:text="${inputString}"></span></p>
+
+<!-- Display search results -->
+<ul th:if="${searchResults.results.size() > 0}">
+    <li th:each="result : ${searchResults.results}">
+        <p><strong>Book ID:</strong> <span th:text="${result.id}"></span></p>
+        <p><strong>Title:</strong> <span th:text="${result.title}"></span></p>
+        <p><strong>Authors:</strong>
+            <span th:each="author : ${result.authors}" th:text="${author.name} + ', '"></span>
+        </p>
+        <p><strong>Subjects:</strong>
+            <span th:each="subject : ${result.subjects}" th:text="${subject + ', '}"></span>
+        </p>
+        <p><strong>Bookshelves:</strong>
+            <span th:each="bookshelf : ${result.bookshelves}" th:text="${bookshelf + ', '}"></span>
+        </p>
+        <p><strong>Languages:</strong>
+            <span th:each="language : ${result.languages}" th:text="${language + ', '}"></span>
+        </p>
+        <p><strong>Copyright:</strong> <span th:text="${result.copyright}"></span></p>
+        <p><strong>Media Type:</strong> <span th:text="${result.media_type}"></span></p>
+        <p><strong>Download Count:</strong> <span th:text="${result.download_count}"></span></p>
+
+        <form th:action="@{/books/addToLibrary}" method="post">
+            <input type="hidden" name="bookId" th:value="${result.id}"/>
+            <button type="submit">Add to Library</button>
+        </form>
+        <hr/>
+    </li>
+</ul>
+</body>
+</html>
