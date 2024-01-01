@@ -16,5 +16,5 @@ public interface UserService {
 
     Long getUserId(String authentication);
 
-    void updateLastPageForBookInLibrary(String email, int bookId, int i);
+    void updateLastPageForBookInLibrary(UserDto userDto, int id, int nextPageIndex);
 }

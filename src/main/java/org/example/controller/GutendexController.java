@@ -214,6 +214,7 @@ public class GutendexController {
                 // Save the pages and current page index in the session
                 session.setAttribute("bookPages", pages);
                 model.addAttribute("bookId", bookId);
+                session.setAttribute("bookId", bookId);
                 // Set the current page index in the model
                 session.setAttribute("currentPageIndex", lastPage);
                 return readContentOfTheBook(model, session, authentication);
@@ -281,7 +282,8 @@ public class GutendexController {
         if (pages != null && currentPageIndex != null && currentPageIndex < pages.size() - 1) {
             // Increment the current page index
             int nextPageIndex = currentPageIndex + 1;
-
+            int id = (int) session.getAttribute("bookId");
+            userService.updateLastPageForBookInLibrary(getUserDto(authentication.getName()), id, currentPageIndex);
             // Get the content of the next page
             String nextPageContent = pages.get(nextPageIndex);
             // Set the next page content, index, and bookId in the model and session
@@ -315,7 +317,8 @@ public class GutendexController {
         if (pages != null && currentPageIndex != null && currentPageIndex > 0) {
             // Decrement the current page index
             int previousPageIndex = currentPageIndex - 1;
-
+            int id = (int) session.getAttribute("bookId");
+            userService.updateLastPageForBookInLibrary(getUserDto(authentication.getName()), id, currentPageIndex);
             // Get the content of the previous page
             String previousPageContent = pages.get(previousPageIndex);
             // Set the previous page content, index, and bookId in the model and session
@@ -329,5 +332,10 @@ public class GutendexController {
             // You may want to redirect to the first page or handle it in a way that fits your requirements
             return "books/error";
         }
+    }
+
+    public UserDto getUserDto(String username) {
+        User user = userService.findUserByEmail(username);
+        return userMapper.mapToDto(user);
     }
 }

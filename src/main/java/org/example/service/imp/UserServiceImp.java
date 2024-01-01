@@ -99,28 +99,28 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public void updateLastPageForBookInLibrary(String email, int bookId, int lastPage) {
-        // Retrieve the user from the database
-        User user = userRepository.findByEmail(email);
-        if (user == null) {
-            throw new EntityNotFoundException("User not found with email: " + email);
-        }
+    public void updateLastPageForBookInLibrary(UserDto userDto, int bookApiId, int lastPage) {
+        Optional<User> optionalUser = userRepository.findById(userDto.getId());
 
-        // Find the book in the user's library
-        Optional<LibBook> optionalBook = user.getBooks().stream()
-                .filter(book -> book.getId().equals(bookId))
-                .findFirst();
-
-        if (optionalBook.isPresent()) {
-            // Update the last page for the specific book
-            LibBook bookToUpdate = optionalBook.get();
-            bookToUpdate.setLastPageIndex(lastPage);
+        if (optionalUser.isPresent()) {
+            // Update the user's library
+            User existingUser = optionalUser.get();
+            for (int i = 0; i < existingUser.getBooks().size(); i++) {
+                LibBook libBook = existingUser.getBooks().get(i);
+                if (libBook.getApiId() == bookApiId) {
+                    libBook.setLastPageIndex(lastPage);
+                    existingUser.getBooks().set(i, libBook);
+                    userRepository.save(existingUser);
+                } else {
+                    System.out.println("hata xd");
+                }
+            }
 
             // Save the updated user entity
-            userRepository.save(user);
+            userRepository.save(existingUser);
         } else {
-            // Handle the case where the book with the provided ID is not found in the user's library
-            throw new EntityNotFoundException("Book not found in the user's library with ID: " + bookId);
+            // Handle the case where the user with the provided ID is not found
+            throw new EntityNotFoundException("User not found with ID: " + userDto.getId());
         }
     }
 

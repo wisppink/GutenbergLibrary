@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8191ee2e-88d6-414d-9c54-e5a0526a825d" name="Changes" comment="libBook has lastPageIndex and readBooks work but not next and previous.">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/books/error.html" afterDir="false" />
+    <list default="true" id="8191ee2e-88d6-414d-9c54-e5a0526a825d" name="Changes" comment="nextPage previousPage works. there is no save method for lastPageIndex.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/GutendexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/GutendexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/books/read.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/books/read.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/imp/UserServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/imp/UserServiceImp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -316,7 +316,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704139210616</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="nextPage previousPage works. there is no save method for lastPageIndex.">
+      <option name="closed" value="true" />
+      <created>1704146656133</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1704146656133</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -357,7 +365,8 @@
     <MESSAGE value="personal library and addBook function." />
     <MESSAGE value="removeBook function." />
     <MESSAGE value="libBook has lastPageIndex and readBooks work but not next and previous." />
-    <option name="LAST_COMMIT_MESSAGE" value="libBook has lastPageIndex and readBooks work but not next and previous." />
+    <MESSAGE value="nextPage previousPage works. there is no save method for lastPageIndex." />
+    <option name="LAST_COMMIT_MESSAGE" value="nextPage previousPage works. there is no save method for lastPageIndex." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
