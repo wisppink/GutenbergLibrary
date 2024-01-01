@@ -124,20 +124,38 @@ public class GutendexController {
 
     @Transactional
     @PostMapping("/addToLibrary")
-    public String addToLibrary(@RequestParam Long bookId, Authentication authentication) {
+    public String addToLibrary(Model model, @RequestParam Long bookId, Authentication authentication) {
+        logger.info("add to library book id: " + bookId);
         // Retrieve the authenticated user
         if (authentication != null && authentication.isAuthenticated()) {
             String username = authentication.getName();
 
             // Fetch the user from the database
             User user = userService.findUserByEmail(username);
-            // Fetch the book from the database (or any other data source)
+
+            // Check if the book is already in the user's library
+            if (user.getBooks().stream().anyMatch(book -> book.getId().equals(bookId))) {
+                // Handle the case where the book is already in the library
+                return "redirect:/books/library?error=alreadyInLibrary";
+            }
+
+            // Fetch book details from the external service
             LibBook book = gutendexService.getBookDetailsAsLibBook(bookId);
-            LibBook attachedBook = entityManager.merge(book);
-            user.getBooks().add(attachedBook);
-            UserDto userDto = userMapper.mapToDto(user);
-            userService.updateUserLibrary(userDto);
-            return "redirect:/books/library";
+
+            // Check if the book details were successfully retrieved
+            if (book != null) {
+                // Add the book to the user's library
+                user.getBooks().add(book);
+
+                // Update the user's library in the database
+                UserDto userDto = userMapper.mapToDto(user);
+                userService.updateUserLibrary(userDto);
+                model.addAttribute("bookId", bookId);
+                return "redirect:/books/library";
+            } else {
+                // Handle the case where book details couldn't be retrieved
+                return "redirect:/books/library?error=bookDetailsNotFound";
+            }
         } else {
             // Redirect to the login page or handle as appropriate
             return "redirect:/login";
@@ -169,39 +187,53 @@ public class GutendexController {
     }
 
     @PostMapping("/readTheBook")
-    public String readTheBook(Model model, HttpSession session, @RequestParam int bookID) {
-        Book book = gutendexService.getBookDetails((long) bookID);
-        Format formats = book.getFormats();
-        String selectedFormat = gutendexService.prioritizeFormats(formats);
+    public String readTheBook(Model model, HttpSession session, @RequestParam int bookId, Authentication authentication) {
+        logger.info("readTheBook requested param: " + bookId);
+        if (authentication != null && authentication.isAuthenticated()) {
+            String email = authentication.getName();
+            Book book = gutendexService.getBookDetails((long) bookId);
+            Long userId = userService.getUserId(email);
+            int lastPage = gutendexService.findTheBooksLastPage(bookId, userId);
+            if (lastPage < 0) {
+                return "redirect:/error";
+            }
 
-        if (selectedFormat != null) {
-            String contentUrl = formats.getFormatMap().get(selectedFormat);
-            logger.info("Content url: " + contentUrl);
-            // Fetch content based on the selected format
-            String content = gutendexService.fetchBookContent(contentUrl);
+            Format formats = book.getFormats();
+            String selectedFormat = gutendexService.prioritizeFormats(formats);
 
+            if (selectedFormat != null) {
+                String contentUrl = formats.getFormatMap().get(selectedFormat);
+                logger.info("Content url: " + contentUrl);
+                // Fetch content based on the selected format
+                String content = gutendexService.fetchBookContent(contentUrl);
 
-            // Split content into pages
-            List<String> pages = gutendexService.splitContentIntoPages(content);
-            logger.info("controller: pages: size:  " + pages.size());
+                // Split content into pages
+                List<String> pages = gutendexService.splitContentIntoPages(content);
+                logger.info("controller: pages: size:  " + pages.size());
 
-            // Save the pages and current page index in the session
-            session.setAttribute("bookPages", pages);
-            int currentPageIndex = 0;
-            // Set the current page index in the model
-            model.addAttribute("currentPageIndex", currentPageIndex);
-            return readContentOfTheBook(model, session);
+                // Save the pages and current page index in the session
+                session.setAttribute("bookPages", pages);
+                model.addAttribute("bookId", bookId);
+                // Set the current page index in the model
+                model.addAttribute("currentPageIndex", lastPage);
+                return readContentOfTheBook(model, session);
+            } else {
+                // Handle the case where no suitable format is available
+                return "books/noFormatAvailable";
+            }
         } else {
-            // Handle the case where no suitable format is available
-            return "books/noFormatAvailable";
+            // Handle the case where user is not authenticated
+            return "redirect:/login";
         }
     }
+
 
     @GetMapping("/read")
     public String readContentOfTheBook(Model model, HttpSession session) {
         // Retrieve pages and current page index from the session
         List<String> pages = (List<String>) session.getAttribute("bookPages");
         Integer currentPageIndex = (Integer) model.getAttribute("currentPageIndex");
+        int bookId = (int) model.getAttribute("bookId");
 
         // Check if pages and currentPageIndex are available in the session
         if (pages != null && currentPageIndex != null && currentPageIndex < pages.size()) {
@@ -212,7 +244,7 @@ public class GutendexController {
             // Set the current page content and index in the model
             model.addAttribute("currentPageContent", currentPageContent);
             model.addAttribute("currentPageIndex", currentPageIndex);
-
+            model.addAttribute("bookId", bookId);
             return "books/read";
         } else {
             // Log details about the error
@@ -231,33 +263,39 @@ public class GutendexController {
     }
 
     @PostMapping("/nextPage")
-    public String nextPage(Model model, HttpSession session) {
+    public String nextPage(Model model, HttpSession session, Authentication authentication) {
         // Retrieve pages and current page index from the session
-        logger.info("next works but not the html");
         Object pagesObject = session.getAttribute("bookPages");
         Object currentPageIndexObject = session.getAttribute("currentPageIndex");
+        int bookId = (int) model.getAttribute("bookId");
 
-        if (pagesObject instanceof List<?> && currentPageIndexObject instanceof Integer currentPageIndex) {
-            List<String> pages = (List<String>) pagesObject;
+        if (authentication != null && authentication.isAuthenticated()) {
+            String email = authentication.getName();
+            Long userId = userService.getUserId(email);
 
-            // Check if there are more pages
-            if (currentPageIndex < pages.size() - 1) {
-                // Increment the current page index
-                currentPageIndex++;
-                session.setAttribute("currentPageIndex", currentPageIndex);
+            if (pagesObject instanceof List<?> && currentPageIndexObject instanceof Integer currentPageIndex) {
+                List<String> pages = (List<String>) pagesObject;
 
-                // Set the current page content in the model
-                model.addAttribute("currentPage", pages.get(currentPageIndex));
-                model.addAttribute("totalPages", pages.size());
-
-                return readContentOfTheBook(model, session);
+                // Check if there are more pages
+                if (currentPageIndex < pages.size() - 1) {
+                    // Increment the current page index
+                    session.setAttribute("currentPageIndex", currentPageIndex + 1);
+                    // Set the current page content in the model
+                    model.addAttribute("currentPageContent", pages.get(currentPageIndex + 1));
+                    model.addAttribute("totalPages", pages.size());
+                    userService.updateLastPageForBookInLibrary(email, bookId, (currentPageIndex + 1));
+                    return readContentOfTheBook(model, session);
+                } else {
+                    // Handle the case where there are no more pages
+                    return "books/noMorePages";
+                }
             } else {
-                // Handle the case where there are no more pages
-                return "books/noMorePages";
+                // Handle the case where attributes are not of the expected types
+                return "books/error";
             }
         } else {
-            // Handle the case where attributes are not of the expected types
-            return "books/error";
+            // Handle the case where user is not authenticated
+            return "redirect:/login";
         }
     }
 
@@ -274,10 +312,10 @@ public class GutendexController {
             if (currentPageIndex > 0) {
                 // Decrement the current page index
                 currentPageIndex--;
-                session.setAttribute("currentPageIndex", currentPageIndex);
+                model.addAttribute("currentPageContent", pages.get(currentPageIndex));
 
                 // Set the current page content in the model
-                model.addAttribute("currentPage", pages.get(currentPageIndex));
+                model.addAttribute("currentPageIndex", pages.get(currentPageIndex));
                 model.addAttribute("totalPages", pages.size());
 
                 return readContentOfTheBook(model, session);

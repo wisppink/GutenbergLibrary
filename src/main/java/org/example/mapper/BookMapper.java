@@ -10,8 +10,9 @@ public class BookMapper {
 
     public LibBook bookToLibBook(Book book) {
         LibBook libBook = new LibBook();
-        libBook.setId((long) book.getId());
-        libBook.setUrl("gutendex.com/books/?id=" + book.getId());
+        logger.info("BookId: " + book.getId());
+        libBook.setApiId(book.getId());
+        libBook.setUrl("gutendex.com/books/?ids=" + book.getId());
         logger.info(book.getTitle());
         libBook.setTitle(book.getTitle());
         return libBook;

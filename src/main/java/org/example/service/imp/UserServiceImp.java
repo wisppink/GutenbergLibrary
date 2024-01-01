@@ -2,6 +2,7 @@ package org.example.service.imp;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.example.dto.UserDto;
+import org.example.entity.LibBook;
 import org.example.entity.Role;
 import org.example.entity.User;
 import org.example.repository.RoleRepository;
@@ -91,4 +92,36 @@ public class UserServiceImp implements UserService {
             throw new EntityNotFoundException("User not found with ID: " + updatedUserDto.getId());
         }
     }
+
+    public Long getUserId(String email) {
+        User user = userRepository.findByEmail(email);
+        return (user != null) ? user.getId() : null;
+    }
+
+    @Override
+    public void updateLastPageForBookInLibrary(String email, int bookId, int lastPage) {
+        // Retrieve the user from the database
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
+            throw new EntityNotFoundException("User not found with email: " + email);
+        }
+
+        // Find the book in the user's library
+        Optional<LibBook> optionalBook = user.getBooks().stream()
+                .filter(book -> book.getId().equals(bookId))
+                .findFirst();
+
+        if (optionalBook.isPresent()) {
+            // Update the last page for the specific book
+            LibBook bookToUpdate = optionalBook.get();
+            bookToUpdate.setLastPageIndex(lastPage);
+
+            // Save the updated user entity
+            userRepository.save(user);
+        } else {
+            // Handle the case where the book with the provided ID is not found in the user's library
+            throw new EntityNotFoundException("Book not found in the user's library with ID: " + bookId);
+        }
+    }
+
 }
