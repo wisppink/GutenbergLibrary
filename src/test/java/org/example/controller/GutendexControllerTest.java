@@ -14,6 +14,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 
@@ -58,7 +61,7 @@ class GutendexControllerTest {
 
         // Execution
         String result = String.valueOf(gutendexController.searchBooks(model, null));
-
+        System.out.println("Result: " + result);
         // Verification
         assertEquals("books/results", result);
         verify(gutendexService, times(1)).searchBooks();
@@ -91,6 +94,8 @@ class GutendexControllerTest {
         verify(session, times(1)).setAttribute("inputString", inputString);
         verifyNoInteractions(gutendexService);
         verify(model, times(1)).addAttribute(eq("username"), any());
+
+
     }
 
     @Test
@@ -137,12 +142,19 @@ class GutendexControllerTest {
     void testAddToLibrary() {
         // Setup
         User user = new User();
-        LibBook book = new LibBook();
         when(userService.findUserByEmail(any())).thenReturn(user);
+
+
+        // Simulate authentication
+        Authentication auth = new UsernamePasswordAuthenticationToken("username", "password");
+        auth.setAuthenticated(true);
+        SecurityContextHolder.getContext().setAuthentication(auth);
+
+        LibBook book = new LibBook();
         when(gutendexService.getBookDetailsAsLibBook(anyLong())).thenReturn(book);
 
         // Execution
-        String result = gutendexController.addToLibrary(1L, null);
+        String result = gutendexController.addToLibrary(1L, auth);
 
         // Verification
         assertEquals("redirect:/books/library", result);
@@ -150,6 +162,7 @@ class GutendexControllerTest {
         verify(gutendexService, times(1)).getBookDetailsAsLibBook(anyLong());
         verify(userService, times(1)).updateUserLibrary(any());
     }
+
 
     @Test
     void testRemoveFromLibrary() {

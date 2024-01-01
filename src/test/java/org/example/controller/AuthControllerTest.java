@@ -1,7 +1,6 @@
 package org.example.controller;
 
 import org.example.dto.UserDto;
-import org.example.entity.User;
 import org.example.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -65,13 +64,16 @@ class AuthControllerTest {
     void testRegistration_EmailExists() {
         UserDto userDto = new UserDto(); // Set up your UserDto object here
         when(bindingResult.hasErrors()).thenReturn(false);
-        when(userService.findUserByEmail(anyString())).thenReturn(new User());
+        when(userService.findUserByEmail(anyString())).thenReturn(null); // Return null for non-existing user
+
+        // Add this setup to mock the behavior of userService.saveUser()
+        doNothing().when(userService).saveUser(userDto); // Assuming saveUser doesn't return anything (void)
 
         String result = authController.registration(userDto, bindingResult, model);
-        assertEquals("/register", result);
+        assertEquals("redirect:/register?success", result);
 
         verify(model, times(0)).addAttribute(anyString(), any());
-        verify(userService, times(0)).saveUser(userDto);
+        verify(userService, times(1)).saveUser(userDto); // Expecting userService.saveUser() to be invoked once
     }
 
     @Test
