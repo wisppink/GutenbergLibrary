@@ -144,6 +144,11 @@ public class GutendexController {
 
             // Check if the book details were successfully retrieved
             if (book != null) {
+                for (int i = 0; i < user.getBooks().size(); i++) {
+                    if (bookId == book.getApiId()) {
+                        return "redirect:/books/library";
+                    }
+                }
                 // Add the book to the user's library
                 user.getBooks().add(book);
 
@@ -172,10 +177,14 @@ public class GutendexController {
 
             // Fetch the user from the database
             User user = userService.findUserByEmail(username);
-
+            logger.info("remove id: " + bookId);
             // Remove the book from the user's library
-            user.getBooks().removeIf(book -> book.getId().equals(bookId));
-
+            for (int i = 0; i < user.getBooks().size(); i++) {
+                LibBook book = user.getBooks().get(i);
+                if (bookId == book.getApiId()) {
+                    user.getBooks().remove(i);
+                }
+            }
             // Save the updated user entity
             userService.updateUserLibrary(userMapper.mapToDto(user));
 

@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8191ee2e-88d6-414d-9c54-e5a0526a825d" name="Changes" comment="next prev works.">
+    <list default="true" id="8191ee2e-88d6-414d-9c54-e5a0526a825d" name="Changes" comment="it works but i shows one page behind.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/GutendexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/GutendexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/GutendexService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/GutendexService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/books/library.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/books/library.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -332,7 +330,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704148233712</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="it works but i shows one page behind.">
+      <option name="closed" value="true" />
+      <created>1704149217551</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1704149217551</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -375,7 +381,8 @@
     <MESSAGE value="libBook has lastPageIndex and readBooks work but not next and previous." />
     <MESSAGE value="nextPage previousPage works. there is no save method for lastPageIndex." />
     <MESSAGE value="next prev works." />
-    <option name="LAST_COMMIT_MESSAGE" value="next prev works." />
+    <MESSAGE value="it works but i shows one page behind." />
+    <option name="LAST_COMMIT_MESSAGE" value="it works but i shows one page behind." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
