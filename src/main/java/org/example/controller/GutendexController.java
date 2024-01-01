@@ -238,6 +238,7 @@ public class GutendexController {
             int id = (int) model.getAttribute("bookId");
             Long userId = userService.getUserId(email);
             lastPage = gutendexService.findTheBooksLastPage(id, userId);
+            logger.info("readContent lastPage: " + lastPage);
             if (lastPage < 0) {
                 return "redirect:/error";
             }
@@ -250,6 +251,7 @@ public class GutendexController {
         if (pages != null && lastPage < pages.size()) {
             // Get the content of the current page
             String currentPageContent = pages.get(lastPage);
+            logger.info("currentpageContent: " + currentPageContent);
 
             // Set the current page content, index, and bookId in the model and session
             model.addAttribute("currentPageContent", currentPageContent);

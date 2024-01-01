@@ -149,12 +149,14 @@ public class GutendexService {
     public int findTheBooksLastPage(int bookID, Long userId) {
         User user = userRepository.findById(userId).orElse(null);
 
+
         // or throw an exception, return a default value, etc.
         if (user != null) {
             // Check if the book is in the user's library
             for (int i = 0; i < user.getBooks().size(); i++) {
                 if (user.getBooks().get(i).getApiId() == bookID) {
                     // Retrieve the last page index from the LibBook entity
+                    log.info("last page index: " + user.getBooks().get(i).getLastPageIndex());
                     return user.getBooks().get(i).getLastPageIndex();
                 }
             }

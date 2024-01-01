@@ -15,6 +15,7 @@
     <li th:each="book : ${library}">
         <span th:text="${book.url}"></span>
         <span th:text="${book.apiId}"></span>
+        <span th:text="${book.lastPageIndex}"></span>
         <form th:action="@{/books/removeFromLibrary}" method="post">
             <input type="hidden" name="bookId" th:value="${book.apiId}"/>
             <button type="submit">Remove from Library</button>
