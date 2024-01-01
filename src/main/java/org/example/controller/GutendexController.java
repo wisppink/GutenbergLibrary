@@ -215,8 +215,8 @@ public class GutendexController {
                 session.setAttribute("bookPages", pages);
                 model.addAttribute("bookId", bookId);
                 // Set the current page index in the model
-                model.addAttribute("currentPageIndex", lastPage);
-                return readContentOfTheBook(model, session);
+                session.setAttribute("currentPageIndex", lastPage);
+                return readContentOfTheBook(model, session, authentication);
             } else {
                 // Handle the case where no suitable format is available
                 return "books/noFormatAvailable";
@@ -227,107 +227,107 @@ public class GutendexController {
         }
     }
 
-
     @GetMapping("/read")
-    public String readContentOfTheBook(Model model, HttpSession session) {
+    public String readContentOfTheBook(Model model, HttpSession session, Authentication authentication) {
         // Retrieve pages and current page index from the session
+        int lastPage = -1;
         List<String> pages = (List<String>) session.getAttribute("bookPages");
-        Integer currentPageIndex = (Integer) model.getAttribute("currentPageIndex");
-        int bookId = (int) model.getAttribute("bookId");
-
-        // Check if pages and currentPageIndex are available in the session
-        if (pages != null && currentPageIndex != null && currentPageIndex < pages.size()) {
-            // Get the content of the current page
-            String currentPageContent = pages.get(currentPageIndex);
-            logger.info("Successfully retrieved content for page " + currentPageIndex);
-
-            // Set the current page content and index in the model
-            model.addAttribute("currentPageContent", currentPageContent);
-            model.addAttribute("currentPageIndex", currentPageIndex);
-            model.addAttribute("bookId", bookId);
-            return "books/read";
-        } else {
-            // Log details about the error
-            if (pages == null) {
-                logger.error("Error: Pages are not available in the session.");
-            } else if (currentPageIndex == null) {
-                logger.error("Error: Current page index is not available in the model.");
-            } else {
-                logger.error("Error: Invalid current page index or pages size exceeded. Index: " +
-                        currentPageIndex + ", Total Pages: " + (pages != null ? pages.size() : "N/A"));
-            }
-
-            // Handle the case where pages or currentPageIndex is not available
-            return "books/error";
-        }
-    }
-
-    @PostMapping("/nextPage")
-    public String nextPage(Model model, HttpSession session, Authentication authentication) {
-        // Retrieve pages and current page index from the session
-        Object pagesObject = session.getAttribute("bookPages");
-        Object currentPageIndexObject = session.getAttribute("currentPageIndex");
-        int bookId = (int) model.getAttribute("bookId");
-
         if (authentication != null && authentication.isAuthenticated()) {
             String email = authentication.getName();
+            int id = (int) model.getAttribute("bookId");
             Long userId = userService.getUserId(email);
-
-            if (pagesObject instanceof List<?> && currentPageIndexObject instanceof Integer currentPageIndex) {
-                List<String> pages = (List<String>) pagesObject;
-
-                // Check if there are more pages
-                if (currentPageIndex < pages.size() - 1) {
-                    // Increment the current page index
-                    session.setAttribute("currentPageIndex", currentPageIndex + 1);
-                    // Set the current page content in the model
-                    model.addAttribute("currentPageContent", pages.get(currentPageIndex + 1));
-                    model.addAttribute("totalPages", pages.size());
-                    userService.updateLastPageForBookInLibrary(email, bookId, (currentPageIndex + 1));
-                    return readContentOfTheBook(model, session);
-                } else {
-                    // Handle the case where there are no more pages
-                    return "books/noMorePages";
-                }
-            } else {
-                // Handle the case where attributes are not of the expected types
-                return "books/error";
+            lastPage = gutendexService.findTheBooksLastPage(id, userId);
+            if (lastPage < 0) {
+                return "redirect:/error";
             }
         } else {
             // Handle the case where user is not authenticated
             return "redirect:/login";
         }
-    }
 
-    @PostMapping("/previousPage")
-    public String previousPage(Model model, HttpSession session) {
-        // Retrieve pages and current page index from the session
-        Object pagesObject = session.getAttribute("bookPages");
-        Object currentPageIndexObject = session.getAttribute("currentPageIndex");
+        // Check if pages and currentPageIndex are available in the session
+        if (pages != null && lastPage < pages.size()) {
+            // Get the content of the current page
+            String currentPageContent = pages.get(lastPage);
 
-        if (pagesObject instanceof List<?> && currentPageIndexObject instanceof Integer currentPageIndex) {
-            List<String> pages = (List<String>) pagesObject;
+            // Set the current page content, index, and bookId in the model and session
+            model.addAttribute("currentPageContent", currentPageContent);
+            session.setAttribute("currentPageIndex", lastPage);
+            model.addAttribute("bookId", session.getAttribute("bookId")); // Add this line if needed
 
-            // Check if there are previous pages
-            if (currentPageIndex > 0) {
-                // Decrement the current page index
-                currentPageIndex--;
-                model.addAttribute("currentPageContent", pages.get(currentPageIndex));
-
-                // Set the current page content in the model
-                model.addAttribute("currentPageIndex", pages.get(currentPageIndex));
-                model.addAttribute("totalPages", pages.size());
-
-                return readContentOfTheBook(model, session);
-            } else {
-                // Handle the case where there are no previous pages
-                return "books/library";
-            }
+            return "books/read";
         } else {
-            // Handle the case where attributes are not of the expected types
+            // Log details about the error
+            if (pages == null) {
+                logger.error("Error: Pages are not available in the session.");
+            } else {
+                logger.error("Error: Invalid current page index or pages size exceeded. Index: " +
+                        lastPage + ", Total Pages: " + pages.size());
+            }
+
+            // Handle the case where pages or currentPageIndex is not available or index is out of bounds
             return "books/error";
         }
     }
 
 
+    @PostMapping("/nextPage")
+    public String nextPage(Model model, HttpSession session, Authentication authentication) {
+        // Retrieve pages and current page index from the session
+        List<String> pages = (List<String>) session.getAttribute("bookPages");
+        Integer currentPageIndex = (Integer) session.getAttribute("currentPageIndex");
+
+        // Check if pages and currentPageIndex are available in the session
+        if (pages != null && currentPageIndex != null && currentPageIndex < pages.size() - 1) {
+            // Increment the current page index
+            int nextPageIndex = currentPageIndex + 1;
+
+            // Get the content of the next page
+            String nextPageContent = pages.get(nextPageIndex);
+            // Set the next page content, index, and bookId in the model and session
+            model.addAttribute("currentPageContent", nextPageContent);
+            session.setAttribute("currentPageIndex", nextPageIndex);
+            model.addAttribute("bookId", session.getAttribute("bookId")); // Add this line if needed
+
+            return "books/read";
+        } else {
+            // Log details about the error
+            if (pages == null) {
+                logger.error("Error: Pages are not available in the session.");
+            } else {
+                logger.error("Error: Invalid current page index or pages size exceeded. Index: " +
+                        currentPageIndex + ", Total Pages: " + (pages != null ? pages.size() : "null"));
+            }
+
+            // Handle the case where pages or currentPageIndex is not available or index is out of bounds
+            return "books/error";
+        }
+    }
+
+
+    @PostMapping("/previousPage")
+    public String previousPage(Model model, HttpSession session, Authentication authentication) {
+        // Retrieve pages and current page index from the session
+        List<String> pages = (List<String>) session.getAttribute("bookPages");
+        Integer currentPageIndex = (Integer) session.getAttribute("currentPageIndex");
+
+        // Check if pages and currentPageIndex are available in the session
+        if (pages != null && currentPageIndex != null && currentPageIndex > 0) {
+            // Decrement the current page index
+            int previousPageIndex = currentPageIndex - 1;
+
+            // Get the content of the previous page
+            String previousPageContent = pages.get(previousPageIndex);
+            // Set the previous page content, index, and bookId in the model and session
+            model.addAttribute("currentPageContent", previousPageContent);
+            session.setAttribute("currentPageIndex", previousPageIndex);
+            model.addAttribute("bookId", session.getAttribute("bookId")); // Add this line if needed
+
+            return "books/read";
+        } else {
+            // Handle the case where there are no previous pages
+            // You may want to redirect to the first page or handle it in a way that fits your requirements
+            return "books/error";
+        }
+    }
 }
