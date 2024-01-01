@@ -8,9 +8,18 @@ public class LibBook {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private int apiId;
     private String url;
+    private String title;
+    private int lastPageIndex;
+
+    public int getLastPageIndex() {
+        return lastPageIndex;
+    }
+
+    public void setLastPageIndex(int lastPageIndex) {
+        this.lastPageIndex = lastPageIndex;
+    }
 
     public Long getId() {
         return id;
@@ -34,5 +43,13 @@ public class LibBook {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

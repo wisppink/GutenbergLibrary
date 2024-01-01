@@ -3,8 +3,6 @@ package org.example.security;
 import org.example.entity.Role;
 import org.example.entity.User;
 import org.example.repository.UserRepository;
-import org.springframework.context.annotation.Bean;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,7 +16,7 @@ import java.util.stream.Collectors;
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public CustomUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -42,5 +40,10 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .map(role -> new SimpleGrantedAuthority(role.getName()))
                 .collect(Collectors.toList());
         return mapRoles;
+    }
+
+    public Long getUserId(String email) {
+        User user = userRepository.findByEmail(email);
+        return (user != null) ? user.getId() : null;
     }
 }

@@ -13,10 +13,16 @@
 <!-- Display user's library -->
 <ul>
     <li th:each="book : ${library}">
-        <span th:text="${book.url}"></span> -
+        <span th:text="${book.url}"></span>
+        <span th:text="${book.apiId}"></span>
+        <span th:text="${book.lastPageIndex}"></span>
         <form th:action="@{/books/removeFromLibrary}" method="post">
-            <input type="hidden" name="bookId" th:value="${book.id}"/>
+            <input type="hidden" name="bookId" th:value="${book.apiId}"/>
             <button type="submit">Remove from Library</button>
+        </form>
+        <form th:action="@{/books/readTheBook}" method="post">
+            <input type="hidden" name="bookId" th:value="${book.apiId}"/>
+            <button type="submit" th:text="'Read ' + ${book.title}">Read</button>
         </form>
     </li>
 </ul>

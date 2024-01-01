@@ -2,6 +2,7 @@ package org.example.service.imp;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.example.dto.UserDto;
+import org.example.entity.LibBook;
 import org.example.entity.Role;
 import org.example.entity.User;
 import org.example.repository.RoleRepository;
@@ -91,4 +92,36 @@ public class UserServiceImp implements UserService {
             throw new EntityNotFoundException("User not found with ID: " + updatedUserDto.getId());
         }
     }
+
+    public Long getUserId(String email) {
+        User user = userRepository.findByEmail(email);
+        return (user != null) ? user.getId() : null;
+    }
+
+    @Override
+    public void updateLastPageForBookInLibrary(UserDto userDto, int bookApiId, int lastPage) {
+        Optional<User> optionalUser = userRepository.findById(userDto.getId());
+
+        if (optionalUser.isPresent()) {
+            // Update the user's library
+            User existingUser = optionalUser.get();
+            for (int i = 0; i < existingUser.getBooks().size(); i++) {
+                LibBook libBook = existingUser.getBooks().get(i);
+                if (libBook.getApiId() == bookApiId) {
+                    libBook.setLastPageIndex(lastPage);
+                    existingUser.getBooks().set(i, libBook);
+                    userRepository.save(existingUser);
+                } else {
+                    System.out.println("hata xd");
+                }
+            }
+
+            // Save the updated user entity
+            userRepository.save(existingUser);
+        } else {
+            // Handle the case where the user with the provided ID is not found
+            throw new EntityNotFoundException("User not found with ID: " + userDto.getId());
+        }
+    }
+
 }

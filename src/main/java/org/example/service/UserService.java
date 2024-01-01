@@ -13,4 +13,8 @@ public interface UserService {
     List<UserDto> findAllUsers();
 
     void updateUserLibrary(UserDto updatedUserDto);
+
+    Long getUserId(String authentication);
+
+    void updateLastPageForBookInLibrary(UserDto userDto, int id, int nextPageIndex);
 }

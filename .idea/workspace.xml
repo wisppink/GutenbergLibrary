@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8191ee2e-88d6-414d-9c54-e5a0526a825d" name="Changes" comment="personal library and addBook function.">
+    <list default="true" id="8191ee2e-88d6-414d-9c54-e5a0526a825d" name="Changes" comment="it works but i shows one page behind.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/GutendexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/GutendexController.java" afterDir="false" />
     </list>
@@ -47,18 +47,21 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="HTML File" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;wisppink&quot;
   }
 }</component>
   <component name="GithubPullRequestsUISettings">
@@ -75,12 +78,15 @@
       </UrlAndAccount>
     </option>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2aAcq6kod44xPRBpJX8JnucJ5pg" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -173,6 +179,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.UserRepositoryTests.testCreateUser" />
+        <item itemvalue="Gradle.UserRepositoryTests" />
         <item itemvalue="Gradle.UserRepositoryTests" />
         <item itemvalue="Gradle.UserRepositoryTests.testCreateUser" />
       </list>
@@ -290,7 +298,47 @@
       <option name="project" value="LOCAL" />
       <updated>1703984515332</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="removeBook function.">
+      <option name="closed" value="true" />
+      <created>1704011292625</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1704011292626</updated>
+    </task>
+    <task id="LOCAL-00014" summary="libBook has lastPageIndex and readBooks work but not next and previous.">
+      <option name="closed" value="true" />
+      <created>1704139210616</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1704139210616</updated>
+    </task>
+    <task id="LOCAL-00015" summary="nextPage previousPage works. there is no save method for lastPageIndex.">
+      <option name="closed" value="true" />
+      <created>1704146656133</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1704146656133</updated>
+    </task>
+    <task id="LOCAL-00016" summary="next prev works.">
+      <option name="closed" value="true" />
+      <created>1704148233712</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1704148233712</updated>
+    </task>
+    <task id="LOCAL-00017" summary="it works but i shows one page behind.">
+      <option name="closed" value="true" />
+      <created>1704149217551</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1704149217551</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -329,7 +377,12 @@
     <MESSAGE value="updated switch case labels" />
     <MESSAGE value="library setup started" />
     <MESSAGE value="personal library and addBook function." />
-    <option name="LAST_COMMIT_MESSAGE" value="personal library and addBook function." />
+    <MESSAGE value="removeBook function." />
+    <MESSAGE value="libBook has lastPageIndex and readBooks work but not next and previous." />
+    <MESSAGE value="nextPage previousPage works. there is no save method for lastPageIndex." />
+    <MESSAGE value="next prev works." />
+    <MESSAGE value="it works but i shows one page behind." />
+    <option name="LAST_COMMIT_MESSAGE" value="it works but i shows one page behind." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
