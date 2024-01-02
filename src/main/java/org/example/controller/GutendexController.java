@@ -114,7 +114,9 @@ public class GutendexController {
 
             model.addAttribute("username", username);
             model.addAttribute("library", library);
-
+            for (LibBook libBook : library) {
+                logger.info("library books: " + libBook.getTitle());
+            }
             return "books/library";
         } else {
             // Redirect to the login page or handle as appropriate
@@ -134,33 +136,21 @@ public class GutendexController {
             User user = userService.findUserByEmail(username);
 
             // Check if the book is already in the user's library
-            if (user.getBooks().stream().anyMatch(book -> book.getId().equals(bookId))) {
+            if (user.getBooks().stream().anyMatch(book -> book.getApiId() == (bookId))) {
                 // Handle the case where the book is already in the library
                 return "redirect:/books/library?error=alreadyInLibrary";
             }
 
             // Fetch book details from the external service
             LibBook book = gutendexService.getBookDetailsAsLibBook(bookId);
+            // Add the book to the user's library
+            user.getBooks().add(book);
+            // Update the user's library in the database
+            UserDto userDto = userMapper.mapToDto(user);
+            userService.updateUserLibrary(userDto);
+            model.addAttribute("bookId", bookId);
+            return "redirect:/books/library";
 
-            // Check if the book details were successfully retrieved
-            if (book != null) {
-                for (int i = 0; i < user.getBooks().size(); i++) {
-                    if (bookId == book.getApiId()) {
-                        return "redirect:/books/library";
-                    }
-                }
-                // Add the book to the user's library
-                user.getBooks().add(book);
-
-                // Update the user's library in the database
-                UserDto userDto = userMapper.mapToDto(user);
-                userService.updateUserLibrary(userDto);
-                model.addAttribute("bookId", bookId);
-                return "redirect:/books/library";
-            } else {
-                // Handle the case where book details couldn't be retrieved
-                return "redirect:/books/library?error=bookDetailsNotFound";
-            }
         } else {
             // Redirect to the login page or handle as appropriate
             return "redirect:/login";
