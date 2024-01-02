@@ -50,9 +50,10 @@
         }
         ul {
           display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
+          grid-template-columns: 1fr 1fr;
           gap: 2rem;
           margin-bottom: 3rem;
+          padding:2rem;
         }
 
         .read-btn {
@@ -128,7 +129,6 @@
         </ul>
     </div>
 </div>
-<!-- Link to go back to search -->
-<a th:href="@{/books/search}" class="back-link">Back to Search</a>
+<a th:href="@{/index}" class="back-link">Back to Index</a>
 </body>
 </html>
