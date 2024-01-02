@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8191ee2e-88d6-414d-9c54-e5a0526a825d" name="Changes" comment="it works but i shows one page behind.">
+    <list default="true" id="8191ee2e-88d6-414d-9c54-e5a0526a825d" name="Changes" comment="Tests with JUnit">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/GutenbergLibrary/AuthControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/GutendexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/GutendexController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,15 +47,15 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="Sude" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -73,7 +73,7 @@
     </option>
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="9d248328-0fc6-437a-bb30-b0bee5f9cd81" />
+        <option name="accountId" value="f3765af4-69e8-4ad1-8904-aa61f1ad918a" />
         <option name="url" value="https://github.com/wisppink/GutenbergLibrary.git" />
       </UrlAndAccount>
     </option>
@@ -104,11 +104,11 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Sude&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Zehra&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Sude/IdeaProjects/GutenbergLibrary/src/main/resources/templates&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.38965517&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
@@ -123,6 +123,7 @@
       <recent name="C:\Users\Sude\IdeaProjects\GutenbergLibrary\src\main\resources\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\brain\IdeaProjects\GutenbergLibrary\src" />
       <recent name="C:\Users\Sude\IdeaProjects\GutenbergLibrary\src\main\resources\templates\books" />
       <recent name="C:\Users\Sude\IdeaProjects\GutenbergLibrary\src\main\resources\templates" />
       <recent name="C:\Users\Sude\IdeaProjects\GutenbergLibrary\src\main\resources\static" />
@@ -183,6 +184,8 @@
         <item itemvalue="Gradle.UserRepositoryTests" />
         <item itemvalue="Gradle.UserRepositoryTests" />
         <item itemvalue="Gradle.UserRepositoryTests.testCreateUser" />
+        <item itemvalue="Gradle.UserRepositoryTests" />
+        <item itemvalue="Gradle.UserRepositoryTests" />
       </list>
     </recent_temporary>
   </component>
@@ -306,6 +309,17 @@
       <option name="project" value="LOCAL" />
       <updated>1704011292626</updated>
     </task>
+
+    <task id="LOCAL-00014" summary="Tests with JUnit">
+      <option name="closed" value="true" />
+      <created>1704194666249</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1704194666249</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
+
     <task id="LOCAL-00014" summary="libBook has lastPageIndex and readBooks work but not next and previous.">
       <option name="closed" value="true" />
       <created>1704139210616</created>
@@ -339,6 +353,7 @@
       <updated>1704149217551</updated>
     </task>
     <option name="localTasksCounter" value="18" />
+
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -378,11 +393,16 @@
     <MESSAGE value="library setup started" />
     <MESSAGE value="personal library and addBook function." />
     <MESSAGE value="removeBook function." />
+
+    <MESSAGE value="Tests with JUnit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tests with JUnit" />
+
     <MESSAGE value="libBook has lastPageIndex and readBooks work but not next and previous." />
     <MESSAGE value="nextPage previousPage works. there is no save method for lastPageIndex." />
     <MESSAGE value="next prev works." />
     <MESSAGE value="it works but i shows one page behind." />
     <option name="LAST_COMMIT_MESSAGE" value="it works but i shows one page behind." />
+
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
