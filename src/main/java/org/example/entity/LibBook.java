@@ -11,6 +11,15 @@ public class LibBook {
     private int apiId;
     private String url;
     private String title;
+    private int lastPageIndex;
+
+    public int getLastPageIndex() {
+        return lastPageIndex;
+    }
+
+    public void setLastPageIndex(int lastPageIndex) {
+        this.lastPageIndex = lastPageIndex;
+    }
 
     public Long getId() {
         return id;

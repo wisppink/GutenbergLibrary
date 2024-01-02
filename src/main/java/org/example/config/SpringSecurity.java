@@ -1,6 +1,7 @@
 package org.example.config;
 
 
+import org.example.repository.UserRepository;
 import org.example.service.GutendexService;
 import org.example.service.imp.LibraryServiceRemoteDataSourceImp;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,8 @@ public class SpringSecurity {
 
     @Autowired
     private UserDetailsService userDetailsService;
+    @Autowired
+    private UserRepository userRepository;
 
     @Bean
     public static PasswordEncoder passwordEncoder() {
@@ -74,6 +77,6 @@ public class SpringSecurity {
 
     @Bean
     public GutendexService gutendexService() {
-        return new GutendexService(new LibraryServiceRemoteDataSourceImp());
+        return new GutendexService(new LibraryServiceRemoteDataSourceImp(), userRepository);
     }
 }
