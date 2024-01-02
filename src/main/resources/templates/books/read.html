@@ -10,16 +10,23 @@
 <div>
     <!-- Display the content of the current page -->
     <p th:text="${currentPageContent}"></p>
+    <input type="hidden" name="currentPageIndex" th:value="${currentPageIndex}"/>
+    <input type="hidden" name="bookId" th:value="${bookId}"/>
 </div>
 
 <div>
+    <!-- Form for Next Page -->
     <form th:action="@{/books/nextPage}" method="post">
+        <input type="hidden" name="currentPageIndex" th:value="${currentPageIndex}"/>
+        <input type="hidden" name="bookId" th:value="${bookId}"/>
         <button type="submit">Next Page</button>
     </form>
+    <!-- Form for Previous Page -->
     <form th:action="@{/books/previousPage}" method="post">
+        <input type="hidden" name="currentPageIndex" th:value="${currentPageIndex}"/>
+        <input type="hidden" name="bookId" th:value="${bookId}"/>
         <button type="submit">Previous Page</button>
     </form>
-
 </div>
 
 </body>

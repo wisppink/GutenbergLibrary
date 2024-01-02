@@ -156,6 +156,7 @@ public class LibraryServiceRemoteDataSourceImp implements LibraryServiceRemoteDa
 
     @Override
     public Book getBookDetail(Long bookId) {
+        logger.info("bookId: " + bookId);
         try (HttpClient client = HttpClient.newHttpClient()) {
             // Create an HttpRequest to the API URL for a specific book
             HttpRequest request = HttpRequest.newBuilder()

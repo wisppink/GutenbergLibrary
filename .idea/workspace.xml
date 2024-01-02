@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8191ee2e-88d6-414d-9c54-e5a0526a825d" name="Changes" comment="Tests with JUnit">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/GutenbergLibrary/GutendexControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/GutenbergLibrary/AuthControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -316,15 +316,7 @@
       <option name="project" value="LOCAL" />
       <updated>1704194666249</updated>
     </task>
-    <task id="LOCAL-00015" summary="Tests with JUnit">
-      <option name="closed" value="true" />
-      <created>1704222902722</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1704222902722</updated>
-    </task>
-    <option name="localTasksCounter" value="16" />
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="UnknownFeatures">

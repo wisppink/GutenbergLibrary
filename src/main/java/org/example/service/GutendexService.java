@@ -1,7 +1,9 @@
 package org.example.service;
 
 import org.example.entity.LibBook;
+import org.example.entity.User;
 import org.example.mapper.BookMapper;
+import org.example.repository.UserRepository;
 import org.example.service.Model.Book;
 import org.example.service.Model.BookList;
 import org.example.service.Model.Format;
@@ -9,6 +11,7 @@ import org.example.service.imp.LibraryServiceRemoteDataSourceImp;
 import org.example.service.remote.LibraryServiceRemoteDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.net.URI;
@@ -22,11 +25,14 @@ import java.util.List;
 public class GutendexService {
 
     private final LibraryServiceRemoteDataSource remoteDataSource;
-    BookMapper bookMapper = new BookMapper();
-    Logger log = LoggerFactory.getLogger(LibraryServiceRemoteDataSourceImp.class.getName());
+    private final UserRepository userRepository;  // Inject UserRepository
+    private final BookMapper bookMapper = new BookMapper();  // Initialize BookMapper
+    private final Logger log = LoggerFactory.getLogger(LibraryServiceRemoteDataSourceImp.class.getName());
 
-    public GutendexService(LibraryServiceRemoteDataSource remoteDataSource) {
+    @Autowired
+    public GutendexService(LibraryServiceRemoteDataSource remoteDataSource, UserRepository userRepository) {
         this.remoteDataSource = remoteDataSource;
+        this.userRepository = userRepository;
     }
 
     public BookList searchBooks() {
@@ -59,11 +65,15 @@ public class GutendexService {
     }
 
     public LibBook getBookDetailsAsLibBook(Long bookId) {
+        log.info("get Book details as lib book");
         Book book = remoteDataSource.getBookDetail(bookId);
-        return bookMapper.bookToLibBook(book);
+        LibBook libBook = bookMapper.bookToLibBook(book);
+        libBook.setLastPageIndex(0);
+        return libBook;
     }
 
     public Book getBookDetails(Long bookId) {
+        log.info("getBookDetails: ");
         return remoteDataSource.getBookDetail(bookId);
     }
 
@@ -134,5 +144,30 @@ public class GutendexService {
         }
         log.info("pages size: " + pages.size());
         return pages;
+    }
+
+    public int findTheBooksLastPage(int bookID, Long userId) {
+        User user = userRepository.findById(userId).orElse(null);
+
+
+        // or throw an exception, return a default value, etc.
+        if (user != null) {
+            // Check if the book is in the user's library
+            for (int i = 0; i < user.getBooks().size(); i++) {
+                if (user.getBooks().get(i).getApiId() == bookID) {
+                    // Retrieve the last page index from the LibBook entity
+                    log.info("last page index: " + user.getBooks().get(i).getLastPageIndex());
+                    return user.getBooks().get(i).getLastPageIndex();
+                }
+            }
+
+            // Handle the case where the book is not in the user's library
+            log.warn("Book with ID {} is not in the user's library", bookID);
+
+        } else {
+            // Handle the case where the user is not found
+            log.error("User not found with ID: {}", userId);
+        }
+        return -1; // or throw an exception, return a default value, etc.
     }
 }
