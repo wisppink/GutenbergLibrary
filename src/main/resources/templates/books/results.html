@@ -44,26 +44,48 @@
         }
 
         .ul-container {
-          border-radius: 2rem;
-          padding: 2rem 4rem;
           display: inline-block;
-          background-color: #333;
           color: #fff;
-          box-shadow: 1px 1px 10px 3px rgba(0, 0, 0, 0.3);
+
         }
         .ul-container p {
           margin-top: 0.2rem;
         }
+        ul {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 2rem;
+          margin-bottom: 3rem;
+        }
         button {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
           padding: 0.8rem 1.6rem;
           font-weight: bold;
           font-size: 1rem;
           margin-top: 1rem;
-          border-radius: 1rem;
+          border-bottom-left-radius:2rem;
+          border-bottom-right-radius:2rem;
           border: none;
           background-color: #eba416;
           color: #fff;
+          transform:translateX(-50%);
+          transition:0.3s all ease;
         }
+        button:hover{
+        background-color: #fff;
+        color: #eba416;
+    }
+        li{
+            position: relative;
+           text-align:center;
+           align-items:center;
+          border-radius: 2rem;
+          padding: 2rem 4rem 5rem 4rem;
+            background-color: #333;
+             box-shadow: 1px 1px 10px 3px rgba(0, 0, 0, 0.3);
+            }
     </style>
 </head>
 
@@ -99,6 +121,7 @@
                     ></span>
                 </p>
                 <p>
+                    <strong>Subjects:</strong>
                 <div th:each="subject : ${result.subjects}">
                     <span th:text="${subject}"></span><br/>
                 </div>
