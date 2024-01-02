@@ -114,7 +114,9 @@ public class GutendexController {
 
             model.addAttribute("username", username);
             model.addAttribute("library", library);
-
+            for (LibBook libBook : library) {
+                logger.info("library books: " + libBook.getTitle());
+            }
             return "books/library";
         } else {
             // Redirect to the login page or handle as appropriate
@@ -134,33 +136,21 @@ public class GutendexController {
             User user = userService.findUserByEmail(username);
 
             // Check if the book is already in the user's library
-            if (user.getBooks().stream().anyMatch(book -> book.getId().equals(bookId))) {
+            if (user.getBooks().stream().anyMatch(book -> book.getApiId() == (bookId))) {
                 // Handle the case where the book is already in the library
-                return "redirect:/books/library?error=alreadyInLibrary";
+                return showError(model, "This book is already in the library.");
             }
 
             // Fetch book details from the external service
             LibBook book = gutendexService.getBookDetailsAsLibBook(bookId);
+            // Add the book to the user's library
+            user.getBooks().add(book);
+            // Update the user's library in the database
+            UserDto userDto = userMapper.mapToDto(user);
+            userService.updateUserLibrary(userDto);
+            model.addAttribute("bookId", bookId);
+            return "redirect:/books/library";
 
-            // Check if the book details were successfully retrieved
-            if (book != null) {
-                for (int i = 0; i < user.getBooks().size(); i++) {
-                    if (bookId == book.getApiId()) {
-                        return "redirect:/books/library";
-                    }
-                }
-                // Add the book to the user's library
-                user.getBooks().add(book);
-
-                // Update the user's library in the database
-                UserDto userDto = userMapper.mapToDto(user);
-                userService.updateUserLibrary(userDto);
-                model.addAttribute("bookId", bookId);
-                return "redirect:/books/library";
-            } else {
-                // Handle the case where book details couldn't be retrieved
-                return "redirect:/books/library?error=bookDetailsNotFound";
-            }
         } else {
             // Redirect to the login page or handle as appropriate
             return "redirect:/login";
@@ -204,9 +194,8 @@ public class GutendexController {
             Long userId = userService.getUserId(email);
             int lastPage = gutendexService.findTheBooksLastPage(bookId, userId);
             if (lastPage < 0) {
-                return "redirect:/error";
+                return showError(model, "There is no page.");
             }
-
             Format formats = book.getFormats();
             String selectedFormat = gutendexService.prioritizeFormats(formats);
 
@@ -229,7 +218,7 @@ public class GutendexController {
                 return readContentOfTheBook(model, session, authentication);
             } else {
                 // Handle the case where no suitable format is available
-                return "books/noFormatAvailable";
+                return showError(model, "No suitable format is available.");
             }
         } else {
             // Handle the case where user is not authenticated
@@ -249,7 +238,7 @@ public class GutendexController {
             lastPage = gutendexService.findTheBooksLastPage(id, userId);
             logger.info("readContent lastPage: " + lastPage);
             if (lastPage < 0) {
-                return "redirect:/error";
+                return showError(model, "There is no page.");
             }
         } else {
             // Handle the case where user is not authenticated
@@ -278,7 +267,7 @@ public class GutendexController {
             }
 
             // Handle the case where pages or currentPageIndex is not available or index is out of bounds
-            return "books/error";
+            return showError(model,"index is out of bounds");
         }
     }
 
@@ -306,14 +295,14 @@ public class GutendexController {
         } else {
             // Log details about the error
             if (pages == null) {
-                logger.error("Error: Pages are not available in the session.");
+                return showError(model,"Error: Pages are not available in the session.");
             } else {
                 logger.error("Error: Invalid current page index or pages size exceeded. Index: " +
-                        currentPageIndex + ", Total Pages: " + (pages != null ? pages.size() : "null"));
+                        currentPageIndex + ", Total Pages: " + pages.size());
             }
 
-            // Handle the case where pages or currentPageIndex is not available or index is out of bounds
-            return "books/error";
+            return showError(model, "Error: Invalid current page index or pages size exceeded. Index: " +
+                    currentPageIndex + ", Total Pages: " + pages.size());
         }
     }
 
@@ -339,10 +328,14 @@ public class GutendexController {
 
             return "books/read";
         } else {
-            // Handle the case where there are no previous pages
-            // You may want to redirect to the first page or handle it in a way that fits your requirements
-            return "books/error";
+            return showError(model, "There is no previous page.");
         }
+    }
+
+    @GetMapping("/error")
+    public String showError(Model model, @RequestParam("message") String errorMessage) {
+        model.addAttribute("errorMessage", errorMessage);
+        return "books/error";
     }
 
     public UserDto getUserDto(String username) {
