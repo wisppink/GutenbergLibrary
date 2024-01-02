@@ -1,43 +1,89 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
->
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>Registration and Login System</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-          crossorigin="anonymous">
+
+    <style>
+        *,
+        *::before,
+        *::after {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        .navbar {
+          align-items: center;
+          display: flex;
+          justify-content: space-between;
+          padding: 2rem 4rem;
+          font-size: 1.6rem;
+          padding: 2rem;
+          text-align: center;
+          background-color: #ccc;
+        }
+        .a-nav {
+          transition: 0.3s all ease;
+          color: #000;
+        }
+        .a-nav:hover {
+          color: rgb(117, 117, 9);
+          cursor: pointer;
+        }
+        .container {
+          background-color: #222;
+          color: #eee;
+          padding: 2rem;
+          height: 20rem;
+          border-radius: 3rem;
+          margin: auto;
+          width: 60%;
+          margin-top: 2rem;
+          text-align: center;
+          align-items: center;
+        }
+        .form-group {
+          display: flex;
+          justify-content: space-between;
+        }
+        .a- {
+          color: #000;
+          margin-top: 10rem;
+          padding: 1rem 2rem;
+          background-color: #eee;
+          border-radius: 1rem;
+          font-size: 1.2rem;
+        }
+
+        .a-:hover {
+          box-shadow: 1px 1px 10px 5px rgba(255, 255, 255, 0.5);
+          transition: 0.3s all ease;
+          color: #eee;
+          background-color: #000;
+          cursor: pointer;
+        }
+        a{
+        text-decoration:none}
+    </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/index}">Registration and Login System</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/register}">Register</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<div class="navbar">
+    <h1 class="navbar-brand" th:href="@{/index}">Gutenberg Library</h1>
+
+    <a class="a-nav" aria-current="page" th:href="@{/register}">Register</a>
+</div>
+
 <br/><br/>
 <div class="container">
     <div class="row">
-        <h1 class="text-center"> Registration and Login System </h1>
+        <h1 class="text-center">Registration and Login System</h1>
         <div class="form-group mb-3">
-            <span>
-                                <a th:href="@{/books/search}">Search</a>
-                            </span>
-            <span>
-                                <a th:href="@{/books/searchBooksWithFilter}">With Filter</a>
-                            </span>
+            <a class="a-" th:href="@{/books/search}">Search</a>
+
+            <a class="a-" th:href="@{/books/searchBooksWithFilter}"
+            >With Filter</a>
+
+            <a class="a-" th:href="@{/books/library}">Library</a>
         </div>
     </div>
 </div>

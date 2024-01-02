@@ -1,33 +1,87 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Read Book</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        body{
+        font-size:1.2rem;
+        }
+        .container-main {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          padding: 4rem 25rem 4rem 25rem;
+          background-color: #444;
+          color: #000;
+        }
+        .content {
+          padding: 4rem;
+          border-radius: 6rem;
+          background-color: #F8DFB1;
+        }
+        .buttons {
+          margin-top: 2rem;
+          display: flex;
+          justify-content: space-around;
+        }
+        a {
+          font-weight: bold;
+          color: #000;
+          text-decoration: none;
+          font-size: 1.4rem;
+        }
+        a:hover {
+          text-shadow: offset-x offset-y blur-radius color;
+          font-style: italic;
+        }
+        button {
+          font-size: 1.1rem;
+          border-radius: 2px;
+          padding: 0.8rem 1.6rem;
+          border: none;
+        }
+        button:hover {
+          cursor: pointer;
+          color: #000;
+          background-color: #fff;
+        }
+    </style>
 </head>
 <body>
-
-<div>
+<div class="container-main">
     <!-- Display the content of the current page -->
-    <p th:text="${currentPageContent}"></p>
-    <input type="hidden" name="currentPageIndex" th:value="${currentPageIndex}"/>
-    <input type="hidden" name="bookId" th:value="${bookId}"/>
-</div>
+    <div class="content">
+        <p th:text="${currentPageContent}"></p>
+        <input type="hidden" name="currentPageIndex" value="" />
+        <input type="hidden" name="bookId" value="21765" />
 
-<div>
-    <!-- Form for Next Page -->
-    <form th:action="@{/books/nextPage}" method="post">
-        <input type="hidden" name="currentPageIndex" th:value="${currentPageIndex}"/>
-        <input type="hidden" name="bookId" th:value="${bookId}"/>
-        <button type="submit">Next Page</button>
-    </form>
-    <!-- Form for Previous Page -->
-    <form th:action="@{/books/previousPage}" method="post">
-        <input type="hidden" name="currentPageIndex" th:value="${currentPageIndex}"/>
-        <input type="hidden" name="bookId" th:value="${bookId}"/>
-        <button type="submit">Previous Page</button>
-    </form>
-</div>
+        <div class="buttons">
+            <form action="/books/previousPage" method="post">
+                <input type="hidden" name="currentPageIndex" value="" />
+                <input type="hidden" name="bookId" value="21765" />
+                <button type="submit">Previous Page</button>
+            </form>
+            <!-- Form for Next Page -->
 
+            <a href="/index" class="back-link">Back to Index</a>
+            <a href="/books/library" class="back-link">Back to Library</a>
+            <!-- Form for Previous Page -->
+            <form action="/books/nextPage" method="post">
+                <input type="hidden" name="currentPageIndex" value="" />
+                <input type="hidden" name="bookId" value="21765" />
+                <button type="submit">Next Page</button>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>

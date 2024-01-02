@@ -1,34 +1,134 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Library</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        .navbar {
+          font-size: 1.6rem;
+          padding: 2rem;
+          text-align: center;
+          background-color: #ccc;
+        }
+
+        .user-inputs-container {
+          margin-top: 1rem;
+          align-items: center;
+          text-align: center;
+        }
+        .user-inputs {
+          padding: 1rem 4rem;
+          background-color: #eee;
+          color: #111;
+          border-radius: 1rem;
+          display: inline-block;
+        }
+
+        .section {
+          margin-top: 2rem;
+          text-align: center;
+        }
+
+        ul {
+          list-style: none;
+        }
+
+        .ul-container {
+          display: inline-block;
+          color: #fff;
+        }
+        .ul-container p {
+          margin-top: 0.2rem;
+        }
+        ul {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 2rem;
+          margin-bottom: 3rem;
+        }
+
+        .read-btn {
+          position: absolute;
+          margin-bottom: 1rem;
+          transform: translateX(-50%);
+          top: 0;
+          border-bottom-right-radius: 2rem;
+        }
+
+        .remove-btn {
+          position: absolute;
+          transform: translateX(-50%);
+          bottom: 0;
+          border-bottom-left-radius: 2rem;
+        }
+        button {
+          width: 100%;
+          padding: 0.8rem 1.6rem;
+          font-weight: bold;
+          font-size: 1rem;
+
+          border: none;
+          background-color: #eba416;
+          color: #fff;
+
+          transition: 0.3s all ease;
+        }
+        button:hover {
+          background-color: #fff;
+          color: #eba416;
+        }
+        li {
+          position: relative;
+          text-align: center;
+          align-items: center;
+          border-radius: 2rem;
+          padding: 3rem 4rem 3rem 4rem;
+          background-color: #333;
+          box-shadow: 1px 1px 10px 3px rgba(0, 0, 0, 0.3);
+        }
+    </style>
 </head>
 <body>
-<h1>User Library</h1>
+<div class="navbar">
+    <h1>User Library</h1>
+</div>
 
-<p>User: <span th:text="${username}"></span></p>
-
+<div class="user-inputs-container">
+    <div class="user-inputs">
+        <p>User: <span th:text="${username}"></span></p>
+    </div>
+</div>
 <!-- Display user's library -->
-<ul>
-    <li th:each="book : ${library}">
-        <span th:text="${book.url}"></span>
-        <span th:text="${book.apiId}"></span>
-        <span th:text="${book.lastPageIndex}"></span>
-        <form th:action="@{/books/removeFromLibrary}" method="post">
-            <input type="hidden" name="bookId" th:value="${book.apiId}"/>
-            <button type="submit">Remove from Library</button>
-        </form>
-        <form th:action="@{/books/readTheBook}" method="post">
-            <input type="hidden" name="bookId" th:value="${book.apiId}"/>
-            <button type="submit" th:text="'Read ' + ${book.title}">Read</button>
-        </form>
-    </li>
-</ul>
-
+<div class="section">
+    <div class="ul-container">
+        <ul>
+            <li th:each="book : ${library}">
+                <form th:action="@{/books/removeFromLibrary}" method="post">
+                    <input type="hidden" name="bookId" th:value="${book.apiId}"/>
+                    <button type="submit">Remove from Library</button>
+                </form>
+                <br>
+                <p>Latest Page Read: <span th:text="${book.lastPageIndex}"></span> </p>
+                <br>
+                <form th:action="@{/books/readTheBook}" method="post">
+                    <input type="hidden" name="bookId" th:value="${book.apiId}"/>
+                    <button type="submit" th:text="'Read ' + ${book.title}">
+                        Read
+                    </button>
+                </form>
+            </li>
+        </ul>
+    </div>
+</div>
 <!-- Link to go back to search -->
 <a th:href="@{/books/search}" class="back-link">Back to Search</a>
-
 </body>
 </html>
