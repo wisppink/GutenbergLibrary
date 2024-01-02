@@ -1,21 +1,92 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Error Page</title>
     <!-- Add your CSS styles or link to external stylesheets here -->
+    <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body {
+          background-color: rgb(145, 23, 23);
+        }
+
+        .main {
+          height: 100vh;
+        }
+
+        .container {
+          box-shadow: inset 5px 5px 10px rgba(99, 4, 4, 0.5);
+          align-items: center;
+          text-align: center;
+          padding: 5rem 2rem 3rem 2rem;
+          border-radius: 4rem;
+          margin: auto;
+          width: 777px;
+          background-color: white !important;
+          font-size: 1.4rem;
+          font-weight: bold;
+        }
+        .links {
+          margin-top: 3rem;
+          display: flex;
+          justify-content: space-around;
+        }
+        .center {
+          margin-bottom: 10rem;
+        }
+        p {
+          font-weight: normal !important;
+        }
+        .-link {
+          transition: 0.3s all ease;
+          background-color: rgb(99, 4, 4);
+          color: #fff;
+          padding: 0.8rem 1.6rem;
+          border-radius: 0.6rem;
+        }
+        .-link:hover {
+          box-shadow: inset 5px 5px 10px rgba(99, 4, 4, 0.5);
+          background-color: #fff;
+          cursor: pointer;
+          color: rgb(99, 4, 4);
+        }
+        h2 {
+          margin-bottom: 1rem;
+        }
+        a{
+        text-decoration:none;
+        color:#fff;
+        }
+        a:hover{
+        color:#000;
+        transition:0.3s all ease}
+    </style>
 </head>
 <body>
-<div style="text-align: center; margin-top: 50px;">
-    <h2>Error</h2>
-    <p th:text="${errorMessage}"></p>
-    <!-- Add additional styling or content as needed -->
+<div class="main">
+    <div class="center"></div>
+    <div class="container" style="text-align: center; margin-top: 50px">
+        <h2>Error</h2>
+        <p th:text="${errorMessage}">dasads</p>
+        <!-- Add additional styling or content as needed -->
 
-    <a class="a-" th:href="@{/books/library}">Go back to library</a>
+        <div class="links">
+            <div class="-link">
+                <a class="a-" th:href="@{/books/library}">Go back to library</a>
+            </div>
 
-    <a class="a-" th:href="@{/index}">Return to Index</a>
+            <div class="-link">
+                <a class="a-" th:href="@{/index}">Return to Index</a>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
