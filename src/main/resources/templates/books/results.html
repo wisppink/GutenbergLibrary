@@ -1,5 +1,72 @@
 <!-- src/main/resources/templates/books/results.html -->
 <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="../client/css/general.css" />
+    <link rel="stylesheet" href="../client/css/books.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container nav-links-all">
+        <div class="logo-container">
+          <a href="#" class="logo-link">
+            <img
+              class="logo"
+              src="../client/images/logo.png"
+              alt="Website Logo"
+              srcset=""
+            />
+          </a>
+        </div>
+        <ul class="nav-links">
+          <li class="nav-link">
+            <div class="nav-link-container profile-link">
+              <a href="#">Profile <i class="fa-solid fa-user"></i></a>
+            </div>
+          </li>
+          <li class="nav-link">
+            <div class="nav-link-container">
+              <a href="bookShelf.html"
+                >Bookshelf <i class="fa-solid fa-book"></i
+              ></a>
+            </div>
+          </li>
+          <li class="nav-link">
+            <div class="nav-link-container">
+              <a href="bookSearch.html"
+                >Book Search <i class="fa-solid fa-magnifying-glass"></i
+              ></a>
+            </div>
+          </li>
+          <li class="nav-link">
+            <div class="nav-link-container settings-link">
+              <a href="#">Settings <i class="fa-solid fa-gear"></i></a>
+            </div>
+          </li>
+          <li class="nav-link">
+            <div class="nav-link-container">
+              <a href="../index.html"
+                >Log out <i class="fa-solid fa-arrow-right-from-bracket"></i
+              ></a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+<br>
+<br>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -7,38 +74,78 @@
     <title>Search Results</title>
 </head>
 <body>
-<h1>Search Results</h1>
-<p>User: <span th:text="${username}"></span></p>
-<p>Switch Case Scenario: <span th:text="${switchCase}"></span></p>
-<p>Input String: <span th:text="${inputString}"></span></p>
-
+    <div class="search">
+        <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search Results</h3>
+        <br>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User: <span th:text="${username}"></span></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Switch Case Scenario: <span th:text="${switchCase}"></span></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Input String: <span th:text="${inputString}"></span></p>
+<br>
 <!-- Display search results -->
 <ul th:if="${searchResults.results.size() > 0}">
     <li th:each="result : ${searchResults.results}">
-        <p><strong>Book ID:</strong> <span th:text="${result.id}"></span></p>
-        <p><strong>Title:</strong> <span th:text="${result.title}"></span></p>
-        <p><strong>Authors:</strong>
+        <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Book ID:</strong> <span th:text="${result.id}"></span></p>
+        <br>
+        <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Title:</strong> <span th:text="${result.title}"></span></p>
+        <br>
+        <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Authors:</strong>
             <span th:each="author : ${result.authors}" th:text="${author.name} + ', '"></span>
         </p>
-        <p><strong>Subjects:</strong>
+        <br>
+        <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subjects:</strong>
             <span th:each="subject : ${result.subjects}" th:text="${subject + ', '}"></span>
         </p>
-        <p><strong>Bookshelves:</strong>
+        <br>
+        <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bookshelves:</strong>
             <span th:each="bookshelf : ${result.bookshelves}" th:text="${bookshelf + ', '}"></span>
         </p>
-        <p><strong>Languages:</strong>
+        <br>
+        <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Languages:</strong>
             <span th:each="language : ${result.languages}" th:text="${language + ', '}"></span>
         </p>
-        <p><strong>Copyright:</strong> <span th:text="${result.copyright}"></span></p>
-        <p><strong>Media Type:</strong> <span th:text="${result.media_type}"></span></p>
-        <p><strong>Download Count:</strong> <span th:text="${result.download_count}"></span></p>
-
+        <br>
+        <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright:</strong> <span th:text="${result.copyright}"></span></p>
+        <br>
+        <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Media Type:</strong> <span th:text="${result.media_type}"></span></p>
+        <br>
+        <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Download Count:</strong> <span th:text="${result.download_count}"></span></p>
+        <br>
+        
         <form th:action="@{/books/addToLibrary}" method="post">
             <input type="hidden" name="bookId" th:value="${result.id}"/>
-            <button type="submit">Add to Library</button>
+            
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit">Add to Library</button>
         </form>
+        <br>
+        <br>
+        <br>
+        
+
         <hr/>
     </li>
 </ul>
+</div>
+
+
+
+<style>
+.search {
+font-size:25px;
+font-family:verdana;
+color:black;
+},
+
+.addLibrary{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 99;
+}
+
+
+</style>
 </body>
 </html>

@@ -1,19 +1,121 @@
 <!-- src/main/resources/templates/books/searchFilterInput.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="../client/css/general.css" />
+    <link rel="stylesheet" href="../client/css/books.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container nav-links-all">
+        <div class="logo-container">
+          <a href="#" class="logo-link">
+            <img
+              class="logo"
+              src="../client/images/logo.png"
+              alt="Website Logo"
+              srcset=""
+            />
+          </a>
+        </div>
+        <ul class="nav-links">
+          <li class="nav-link">
+            <div class="nav-link-container profile-link">
+              <a href="#">Profile <i class="fa-solid fa-user"></i></a>
+            </div>
+          </li>
+          <li class="nav-link">
+            <div class="nav-link-container">
+              <a href="bookShelf.html"
+                >Bookshelf <i class="fa-solid fa-book"></i
+              ></a>
+            </div>
+          </li>
+          <li class="nav-link">
+            <div class="nav-link-container">
+              <a href="bookSearch.html"
+                >Book Search <i class="fa-solid fa-magnifying-glass"></i
+              ></a>
+            </div>
+          </li>
+          <li class="nav-link">
+            <div class="nav-link-container settings-link">
+              <a href="#">Settings <i class="fa-solid fa-gear"></i></a>
+            </div>
+          </li>
+          <li class="nav-link">
+            <div class="nav-link-container">
+              <a href="../index.html"
+                >Log out <i class="fa-solid fa-arrow-right-from-bracket"></i
+              ></a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Book with Filter</title>
+
+    <style>
+
+        .Scenario{
+            
+ 
+    position:flex;
+    margin-top: 10px;
+    margin-left: 20px;
+    position: flex;
+    color: black;
+    font-size: 10px; /* Örneğin, yazı boyutunu 40px olarak küçülttüm */
+    border-radius: 5px;
+    width: 500px;
+    height: 70px;
+    background-size:60px;
+    padding-top:-5%;
+        },
+
+        
+
+    </style>
+
+
+
+
+
 </head>
 <body>
-<h1>Search Book with Filter</h1>
 
-<p>User: <span th:text="${username}"></span></p>
+
+<p> <span th:text="${username}"></span></p>
 
 <form th:action="@{/books/searchBooksWithFilter}" method="post">
-    <label for="switchCase">Switch Case Scenario:</label>
-    <select id="switchCase" name="switchCase" required>
+    <div class="Scenario">
+    <h3><label for="switchCase"><br>&nbsp;Switch Case Scenario:</label></h3>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select id="switchCase"  name="switchCase" required>
         <option value="0">Author Alive in a Given Range of Years: ex:1800-1899</option>
         <option value="1">Copyright: true,false</option>
         <option value="2">ID</option>
@@ -24,10 +126,14 @@
         <option value="7">Topic</option>
     </select>
 
-    <label for="inputString">Input String:</label>
+   
+
+  <label for="inputString">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Input String:</label>
     <input type="text" id="inputString" name="inputString" required>
 
     <button type="submit">Submit</button>
+
 </form>
 </body>
 </html>
+

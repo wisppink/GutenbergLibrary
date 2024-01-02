@@ -8,17 +8,712 @@
     <title>Book Search</title>
 </head>
 <body>
-<h1>Book Search</h1>
-<p>User: <span th:text="${username}"></span></p>
+
+<p> <span th:text="${username}"></span></p>
 <!-- Your Thymeleaf template content goes here -->
 <!-- For example, you can display the list of books -->
 
 <ul>
     <li th:each="book : ${bookList.results}">
-        <span th:text="${book.title}"></span> -
+        <span th:text="${book.title}"></span>
         <span th:each="author : ${book.authors}" th:text="${author.name}"></span>
     </li>
 </ul>
 
 </body>
+</html>
+
+
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
+        />
+
+        <link rel="stylesheet" href="../client/css/general.css" />
+        <link rel="stylesheet" href="../client/css/books.css" />
+      </head>
+      <body>
+        <nav class="navbar">
+          <div class="container nav-links-all">
+            <div class="logo-container">
+              <a href="#" class="logo-link">
+                <img
+                  class="logo"
+                  src="../client/images/logo.png"
+                  alt="Website Logo"
+                  srcset=""
+                />
+              </a>
+            </div>
+            <ul class="nav-links">
+              <li class="nav-link">
+                <div class="nav-link-container profile-link">
+                  <a href="#">Profile <i class="fa-solid fa-user"></i></a>
+                </div>
+              </li>
+              <li class="nav-link">
+                <div class="nav-link-container">
+                  <a href="bookShelf.html"
+                    >Bookshelf <i class="fa-solid fa-book"></i
+                  ></a>
+                </div>
+              </li>
+              <li class="nav-link">
+                <div class="nav-link-container">
+                  <a href="bookSearch.html"
+                    >Book Search <i class="fa-solid fa-magnifying-glass"></i
+                  ></a>
+                </div>
+              </li>
+              <li class="nav-link">
+                <div class="nav-link-container settings-link">
+                  <a href="#">Settings <i class="fa-solid fa-gear"></i></a>
+                </div>
+              </li>
+              <li class="nav-link">
+                <div class="nav-link-container">
+                  <a href="../index.html"
+                    >Log out <i class="fa-solid fa-arrow-right-from-bracket"></i
+                  ></a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <div class="searchbar-main-container">
+          <div class="searchbar-container">
+            <div class="search-container">
+              <input type="text" class="search-input" placeholder="Type.." />
+
+              <button class="search-button">Search</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="books-main-heading-container">
+          <h1 class="books-main-heading">Book Search Page</h1>
+        </div>
+
+        <section class="books container">
+          <div class="books-container--grid">
+            <div class="book-container">
+              <div class="img-container">
+                <img
+                  class="book-image"
+                  src="../client/images/bookExampleCover1.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="book-heading--author-container">
+                <h2 class="book-heading">Frankenstein</h2>
+                <p class="book-author">Marry Shelly</p>
+              </div>
+              <div class="book-subject-container">
+                <div class="subject-heading-container">
+                  <h4 class="subject-heading">Subjects</h4>
+                </div>
+                <ul class="subjects">
+                  <li class="subject">Science Fiction</li>
+                  <li class="subject">Gothic Fiction</li>
+                  <li class="subject">Horror Fiction</li>
+                </ul>
+              </div>
+              <div class="details-btn-container">
+                <button class="details-btn">Details</button>
+              </div>
+            </div>
+            <!--  -->
+            <div class="book-container">
+              <div class="img-container">
+                <img
+                  class="book-image"
+                  src="../client/images/bookExampleCover2.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="book-heading--author-container">
+                <h2 class="book-heading">Frankenstein</h2>
+                <p class="book-author">Marry Shelly</p>
+              </div>
+              <div class="book-subject-container">
+                <div class="subject-heading-container">
+                  <h4 class="subject-heading">Subjects</h4>
+                </div>
+                <ul class="subjects">
+                  <li class="subject">Science Fiction</li>
+                  <li class="subject">Gothic Fiction</li>
+                  <li class="subject">Horror Fiction</li>
+                </ul>
+              </div>
+              <div class="details-btn-container">
+                <button class="details-btn">Details</button>
+              </div>
+            </div>
+            <!--  -->
+            <div class="book-container">
+              <div class="img-container">
+                <img
+                  class="book-image"
+                  src="../client/images/bookExampleCover1.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="book-heading--author-container">
+                <h2 class="book-heading">Frankenstein</h2>
+                <p class="book-author">Marry Shelly</p>
+              </div>
+              <div class="book-subject-container">
+                <div class="subject-heading-container">
+                  <h4 class="subject-heading">Subjects</h4>
+                </div>
+                <ul class="subjects">
+                  <li class="subject">Science Fiction</li>
+                  <li class="subject">Gothic Fiction</li>
+                  <li class="subject">Horror Fiction</li>
+                </ul>
+              </div>
+              <div class="details-btn-container">
+                <button class="details-btn">Details</button>
+              </div>
+            </div>
+            <!--  -->
+
+            <div class="book-container">
+              <div class="img-container">
+                <img
+                  class="book-image"
+                  src="../client/images/bookExampleCover2.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="book-heading--author-container">
+                <h2 class="book-heading">Frankenstein</h2>
+                <p class="book-author">Marry Shelly</p>
+              </div>
+              <div class="book-subject-container">
+                <div class="subject-heading-container">
+                  <h4 class="subject-heading">Subjects</h4>
+                </div>
+                <ul class="subjects">
+                  <li class="subject">Science Fiction</li>
+                  <li class="subject">Gothic Fiction</li>
+                  <li class="subject">Horror Fiction</li>
+                </ul>
+              </div>
+              <div class="details-btn-container">
+                <button class="details-btn">Details</button>
+              </div>
+            </div>
+            <!--  -->
+            <div class="book-container">
+              <div class="img-container">
+                <img
+                  class="book-image"
+                  src="../client/images/bookExampleCover1.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="book-heading--author-container">
+                <h2 class="book-heading">Frankenstein</h2>
+                <p class="book-author">Marry Shelly</p>
+              </div>
+              <div class="book-subject-container">
+                <div class="subject-heading-container">
+                  <h4 class="subject-heading">Subjects</h4>
+                </div>
+                <ul class="subjects">
+                  <li class="subject">Science Fiction</li>
+                  <li class="subject">Gothic Fiction</li>
+                  <li class="subject">Horror Fiction</li>
+                </ul>
+              </div>
+              <div class="details-btn-container">
+                <button class="details-btn">Details</button>
+              </div>
+            </div>
+            <!--  -->
+            <div class="book-container">
+              <div class="img-container">
+                <img
+                  class="book-image"
+                  src="../client/images/bookExampleCover2.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="book-heading--author-container">
+                <h2 class="book-heading">Frankenstein</h2>
+                <p class="book-author">Marry Shelly</p>
+              </div>
+              <div class="book-subject-container">
+                <div class="subject-heading-container">
+                  <h4 class="subject-heading">Subjects</h4>
+                </div>
+                <ul class="subjects">
+                  <li class="subject">Science Fiction</li>
+                  <li class="subject">Gothic Fiction</li>
+                  <li class="subject">Horror Fiction</li>
+                </ul>
+              </div>
+              <div class="details-btn-container">
+                <button class="details-btn">Details</button>
+              </div>
+            </div>
+            <div class="book-container">
+              <div class="img-container">
+                <img
+                  class="book-image"
+                  src="../client/images/bookExampleCover1.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="book-heading--author-container">
+                <h2 class="book-heading">Frankenstein</h2>
+                <p class="book-author">Marry Shelly</p>
+              </div>
+              <div class="book-subject-container">
+                <div class="subject-heading-container">
+                  <h4 class="subject-heading">Subjects</h4>
+                </div>
+                <ul class="subjects">
+                  <li class="subject">Science Fiction</li>
+                  <li class="subject">Gothic Fiction</li>
+                  <li class="subject">Horror Fiction</li>
+                </ul>
+              </div>
+              <div class="details-btn-container">
+                <button class="details-btn">Details</button>
+              </div>
+            </div>
+            <!--  -->
+
+            <div class="book-container">
+              <div class="img-container">
+                <img
+                  class="book-image"
+                  src="../client/images/bookExampleCover2.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="book-heading--author-container">
+                <h2 class="book-heading">Frankenstein</h2>
+                <p class="book-author">Marry Shelly</p>
+              </div>
+              <div class="book-subject-container">
+                <div class="subject-heading-container">
+                  <h4 class="subject-heading">Subjects</h4>
+                </div>
+                <ul class="subjects">
+                  <li class="subject">Science Fiction</li>
+                  <li class="subject">Gothic Fiction</li>
+                  <li class="subject">Horror Fiction</li>
+                </ul>
+              </div>
+              <div class="details-btn-container">
+                <button class="details-btn">Details</button>
+              </div>
+            </div>
+            <!--  -->
+            <div class="book-container">
+              <div class="img-container">
+                <img
+                  class="book-image"
+                  src="../client/images/bookExampleCover1.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="book-heading--author-container">
+                <h2 class="book-heading">Frankenstein</h2>
+                <p class="book-author">Marry Shelly</p>
+              </div>
+              <div class="book-subject-container">
+                <div class="subject-heading-container">
+                  <h4 class="subject-heading">Subjects</h4>
+                </div>
+                <ul class="subjects">
+                  <li class="subject">Science Fiction</li>
+                  <li class="subject">Gothic Fiction</li>
+                  <li class="subject">Horror Fiction</li>
+                </ul>
+              </div>
+              <div class="details-btn-container">
+                <button class="details-btn">Details</button>
+              </div>
+            </div>
+            <!--  -->
+            <div class="book-container">
+              <div class="img-container">
+                <img
+                  class="book-image"
+                  src="../client/images/bookExampleCover2.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="book-heading--author-container">
+                <h2 class="book-heading">Frankenstein</h2>
+                <p class="book-author">Marry Shelly</p>
+              </div>
+              <div class="book-subject-container">
+                <div class="subject-heading-container">
+                  <h4 class="subject-heading">Subjects</h4>
+                </div>
+                <ul class="subjects">
+                  <li class="subject">Science Fiction</li>
+                  <li class="subject">Gothic Fiction</li>
+                  <li class="subject">Horror Fiction</li>
+                </ul>
+              </div>
+              <div class="details-btn-container">
+                <button class="details-btn">Details</button>
+              </div>
+            </div>
+            <div class="book-container">
+              <div class="img-container">
+                <img
+                  class="book-image"
+                  src="../client/images/bookExampleCover1.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="book-heading--author-container">
+                <h2 class="book-heading">Frankenstein</h2>
+                <p class="book-author">Marry Shelly</p>
+              </div>
+              <div class="book-subject-container">
+                <div class="subject-heading-container">
+                  <h4 class="subject-heading">Subjects</h4>
+                </div>
+                <ul class="subjects">
+                  <li class="subject">Science Fiction</li>
+                  <li class="subject">Gothic Fiction</li>
+                  <li class="subject">Horror Fiction</li>
+                </ul>
+              </div>
+              <div class="details-btn-container">
+                <button class="details-btn">Details</button>
+              </div>
+            </div>
+            <!--  -->
+
+            <div class="book-container">
+              <div class="img-container">
+                <img
+                  class="book-image"
+                  src="../client/images/bookExampleCover2.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="book-heading--author-container">
+                <h2 class="book-heading">Frankenstein</h2>
+                <p class="book-author">Marry Shelly</p>
+              </div>
+              <div class="book-subject-container">
+                <div class="subject-heading-container">
+                  <h4 class="subject-heading">Subjects</h4>
+                </div>
+                <ul class="subjects">
+                  <li class="subject">Science Fiction</li>
+                  <li class="subject">Gothic Fiction</li>
+                  <li class="subject">Horror Fiction</li>
+                </ul>
+              </div>
+              <div class="details-btn-container">
+                <button class="details-btn">Details</button>
+              </div>
+            </div>
+            <!--  -->
+            <div class="book-container">
+              <div class="img-container">
+                <img
+                  class="book-image"
+                  src="../client/images/bookExampleCover1.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="book-heading--author-container">
+                <h2 class="book-heading">Frankenstein</h2>
+                <p class="book-author">Marry Shelly</p>
+              </div>
+              <div class="book-subject-container">
+                <div class="subject-heading-container">
+                  <h4 class="subject-heading">Subjects</h4>
+                </div>
+                <ul class="subjects">
+                  <li class="subject">Science Fiction</li>
+                  <li class="subject">Gothic Fiction</li>
+                  <li class="subject">Horror Fiction</li>
+                </ul>
+              </div>
+              <div class="details-btn-container">
+                <button class="details-btn">Details</button>
+              </div>
+            </div>
+            <!--  -->
+            <div class="book-container">
+              <div class="img-container">
+                <img
+                  class="book-image"
+                  src="../client/images/bookExampleCover2.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="book-heading--author-container">
+                <h2 class="book-heading">Frankenstein</h2>
+                <div class="author-container">
+                  <p class="book-author">Marry Shelly</p>
+                </div>
+              </div>
+              <div class="book-subject-container">
+                <div class="subject-heading-container">
+                  <h4 class="subject-heading">Subjects</h4>
+                </div>
+                <div class="subject-heading-container">
+                  <h4 class="subject-heading">Subjects</h4>
+                </div>
+                <ul class="subjects">
+                  <li class="subject">Science Fiction</li>
+                  <li class="subject">Gothic Fiction</li>
+                  <li class="subject">Horror Fiction</li>
+                </ul>
+              </div>
+              <div class="details-btn-container">
+                <button class="details-btn">Details</button>
+              </div>
+            </div>
+            <div class="book-container">
+              <div class="img-container">
+                <img
+                  class="book-image"
+                  src="../client/images/bookExampleCover1.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="book-heading--author-container">
+                <h2 class="book-heading">Frankenstein</h2>
+                <p class="book-author">Marry Shelly</p>
+              </div>
+              <div class="book-subject-container">
+                <div class="subject-heading-container">
+                  <h4 class="subject-heading">Subjects</h4>
+                </div>
+                <ul class="subjects">
+                  <li class="subject">Science Fiction</li>
+                  <li class="subject">Gothic Fiction</li>
+                  <li class="subject">Horror Fiction</li>
+                </ul>
+              </div>
+              <div class="details-btn-container">
+                <button class="details-btn">Details</button>
+              </div>
+            </div>
+            <!--  -->
+
+            <div class="book-container">
+              <div class="img-container">
+                <img
+                  class="book-image"
+                  src="../client/images/bookExampleCover2.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="book-heading--author-container">
+                <h2 class="book-heading">Frankenstein</h2>
+                <p class="book-author">Marry Shelly</p>
+              </div>
+              <div class="book-subject-container">
+                <div class="subject-heading-container">
+                  <h4 class="subject-heading">Subjects</h4>
+                </div>
+                <ul class="subjects">
+                  <li class="subject">Science Fiction</li>
+                  <li class="subject">Gothic Fiction</li>
+                  <li class="subject">Horror Fiction</li>
+                </ul>
+              </div>
+              <div class="details-btn-container">
+                <button class="details-btn">Details</button>
+              </div>
+            </div>
+            <!--  -->
+            <div class="book-container">
+              <div class="img-container">
+                <img
+                  class="book-image"
+                  src="../client/images/bookExampleCover1.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="book-heading--author-container">
+                <h2 class="book-heading">Frankenstein</h2>
+                <p class="book-author">Marry Shelly</p>
+              </div>
+              <div class="book-subject-container">
+                <div class="subject-heading-container">
+                  <h4 class="subject-heading">Subjects</h4>
+                </div>
+                <ul class="subjects">
+                  <li class="subject">Science Fiction</li>
+                  <li class="subject">Gothic Fiction</li>
+                  <li class="subject">Horror Fiction</li>
+                </ul>
+              </div>
+              <div class="details-btn-container">
+                <button class="details-btn">Details</button>
+              </div>
+            </div>
+            <!--  -->
+            <div class="book-container">
+              <div class="img-container">
+                <img
+                  class="book-image"
+                  src="../client/images/bookExampleCover2.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="book-heading--author-container">
+                <h2 class="book-heading">Frankenstein</h2>
+                <p class="book-author">Marry Shelly</p>
+              </div>
+              <div class="book-subject-container">
+                <div class="subject-heading-container">
+                  <h4 class="subject-heading">Subjects</h4>
+                </div>
+                <ul class="subjects">
+                  <li class="subject">Science Fiction</li>
+                  <li class="subject">Gothic Fiction</li>
+                  <li class="subject">Horror Fiction</li>
+                </ul>
+              </div>
+              <div class="details-btn-container">
+                <button class="details-btn">Details</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="modal hidden profile-modal">
+          <div class="modal-inside">
+            <span class="close-modal-cross">&times;</span>
+
+            <h3 class="profile-heading">Username's Profile</h3>
+            <div class="profile-grid">
+              <div class="modal-photo-container">
+                <img
+                  class="modal-photo"
+                  src="../client/images/profile-man.png"
+                  alt=""
+                  srcset=""
+                />
+              </div>
+
+              <div class="profile-infos">
+                <p class="profile-p">
+                  <strong>Name:</strong><span class="profile-span">Akif</span>
+                </p>
+                <p class="profile-p">
+                  <strong>Surname:</strong
+                  ><span class="profile-span">Tunc</span>
+                </p>
+                <p class="profile-p">
+                  <strong>Age:</strong><span class="profile-span">23</span>
+                </p>
+                <p class="profile-p">
+                  <strong>Country:</strong
+                  ><span class="profile-span">Turkey</span>
+                </p>
+                <p class="profile-p">
+                  <strong>City:</strong
+                  ><span class="profile-span">Eskisehir</span>
+                </p>
+                <p class="profile-p">
+                  <strong>Gender:</strong><span class="profile-span">Male</span>
+                </p>
+              </div>
+            </div>
+            <button class="update-profile-btn">Update Profile</button>
+          </div>
+        </div>
+
+        <div class="modal hidden settings-modal">
+          <div class="modal-inside">
+            <span class="close-modal-cross">&times;</span>
+            <div class="content-of-settings">
+              <h1 class="settings-heading">THEME SETTINGS</h1>
+
+              <div class="buttons-settings">
+                <button class="dark-theme-btn settings-btn">Dark Theme</button>
+                <button class="light-theme-btn settings-btn">
+                  Light Theme
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal hidden details-modal details-modal-booksearch">
+          <div class="modal-inside">
+            <span class="close-modal-cross">&times;</span>
+            <div class="modal-title-and-author-container">
+              <div class="modal-title-container">
+                <h1 class="modal-title">Frankenstein</h1>
+              </div>
+              <p class="modal-author">Mary Shelly</p>
+            </div>
+            <div class="img-and-others-container">
+              <div class="modal-book-img-container">
+                <img
+                  src="../client/images/bookExampleCover1.jpg"
+                  alt=""
+                  class="modal-book-img"
+                />
+              </div>
+              <div class="modal-others-container">
+                <div class="modal-languages-container">
+                  <h4 class="modal-languages">
+                    Languages: <span class="languages-span">EN, GB, TR</span>
+                  </h4>
+                </div>
+                <div class="modal-subjects-container">
+                  <h4 class="modal-subjects-heading">Subjects</h4>
+                  <ul class="modal-subjects">
+                    <li class="modal-subject">Science Fiction</li>
+                    <li class="modal-subject">Horror Fiction</li>
+                    <li class="modal-subject">Gothic Fiction</li>
+                  </ul>
+                </div>
+                <div class="download-and-copyright-container">
+                  <div class="modal-download-container">
+                    <h4 class="modal-download">
+                      Download Count: <span class="download-count">9823</span>
+                    </h4>
+                  </div>
+                  <div class="modal-copyright-container">
+                    <h4 class="modal-copyright">
+                      Copyright: <span class="copyright">Yes</span>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-details-btn-container">
+              <button class="modal-add-bookshelf-btn">Add To Library</button>
+            </div>
+          </div>
+        </div>
+
+        <script src="../client/js/books.js"></script>
+      </body>
+    </html>
+  </body>
 </html>

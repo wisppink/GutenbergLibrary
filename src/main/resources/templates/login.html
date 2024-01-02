@@ -1,87 +1,51 @@
+
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
+xmlns:th="http://www.thymeleaf.org"
 >
 <head>
-    <meta charset="UTF-8">
-    <title>Registration and Login System</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-          crossorigin="anonymous">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="client/css/loginStyle.css" />
+    <link rel="stylesheet" href="client/css/general.css" />
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/index}">Registration and Login System</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/register}">Register</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<br/><br/>
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-
-            <div th:if="${param.error}">
-                <div class="alert alert-danger">Invalid Email or Password</div>
+    <div class="modal">
+        <div class="modal-inside">
+            <span class="close-modal-cross" id="closeModalBtn">&times;</span>
+            <div class="full-logo-container">
+                <img class="modal-logo" src="client/images/full-logo.png" alt="" srcset="" />
             </div>
-            <div th:if="${param.logout}">
-                <div class="alert alert-success"> You have been logged out.</div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="text-center">Login Form</h2>
-                </div>
-                <div class="card-body">
-                    <form
-                            method="post"
-                            role="form"
-                            th:action="@{/login}"
-                            class="form-horizontal"
-                    >
-                        <div class="form-group mb-3">
-                            <label class="control-label"> Email</label>
-                            <input
-                                    type="text"
-                                    id="username"
-                                    name="username"
-                                    class="form-control"
-                                    placeholder="Enter email address"
-                            />
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label class="control-label"> Password</label>
-                            <input
-                                    type="password"
-                                    id="password"
-                                    name="password"
-                                    class="form-control"
-                                    placeholder="Enter password"
-                            />
-                        </div>
-                        <div class="form-group mb-3">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <span> Not registered ?
-                                <a th:href="@{/register}">Register/Signup here</a>
-                            </span>
-                        </div>
-                    </form>
-                </div>
+            <div class="login-panel">
+                <h4 class="modal-heading">Login to Cbu Bookshelf</h4>
+                <form class="login-form" th:action="@{/login}" method="post">
+                    <div class="form-group" th:if="${param.error}">
+                        <div class="alert alert-danger">Invalid Email or Password</div>
+                    </div>
+                    <div class="form-group" th:if="${param.logout}">
+                        <div class="alert alert-success"> You have been logged out.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="modal-button">Login</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-</div>
+
+
+    <script src="client/js/script.js"></script>
 </body>
 </html>

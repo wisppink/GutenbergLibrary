@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
@@ -27,10 +28,78 @@
         </div>
     </div>
 </nav>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="client/css/general.css" />
+    <link rel="stylesheet" href="client/css/books.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container nav-links-all">
+        <div class="logo-container">
+          <a href="#" class="logo-link">
+            <img
+              class="logo"
+              src="client/images/logo.png"
+              alt="Website Logo"
+              srcset=""
+            />
+          </a>
+        </div>
+        <ul class="nav-links">
+          <li class="nav-link">
+            <div class="nav-link-container profile-link">
+              <a href="#">Profile <i class="fa-solid fa-user"></i></a>
+            </div>
+          </li>
+          <li class="nav-link">
+            <div class="nav-link-container">
+              <a href="bookShelf.html"
+                >Bookshelf <i class="fa-solid fa-book"></i
+              ></a>
+            </div>
+          </li>
+          <li class="nav-link">
+            <div class="nav-link-container">
+              <a href="bookSearch.html"
+                >Book Search <i class="fa-solid fa-magnifying-glass"></i
+              ></a>
+            </div>
+          </li>
+          <li class="nav-link">
+            <div class="nav-link-container settings-link">
+              <a href="#">Settings <i class="fa-solid fa-gear"></i></a>
+            </div>
+          </li>
+          <li class="nav-link">
+            <div class="nav-link-container">
+              <a href="../index.html"
+                >Log out <i class="fa-solid fa-arrow-right-from-bracket"></i
+              ></a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+<br>
+<br>
 <div class="container">
     <div class="row col-md-10">
         <h2>List of Registered Users</h2>
     </div>
+    <br>
     <table class="table table-bordered table-hover">
         <thead class="table-dark">
         <tr>
@@ -47,6 +116,9 @@
         </tr>
         </tbody>
     </table>
+
+
+    
 </div>
 </body>
 </html>
