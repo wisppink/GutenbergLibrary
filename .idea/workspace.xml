@@ -4,6 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="8191ee2e-88d6-414d-9c54-e5a0526a825d" name="Changes" comment="it works but i shows one page behind.">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_1_01_2024_21_09__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_1_01_2024_21_09__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_1_01_2024_21_10__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_1_01_2024_21_10__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/books/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/books/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/books/searchFilterInput.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/books/searchFilterInput.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
     <list default="true" id="8191ee2e-88d6-414d-9c54-e5a0526a825d" name="Changes" comment="Tests with JUnit">
       <change afterPath="$PROJECT_DIR$/src/test/java/com/example/GutenbergLibrary/AuthControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -178,6 +185,10 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Gradle.UserRepositoryTests" />
+      <item itemvalue="Gradle.UserRepositoryTests.testCreateUser" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.UserRepositoryTests.testCreateUser" />
