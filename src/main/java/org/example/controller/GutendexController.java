@@ -138,7 +138,7 @@ public class GutendexController {
             // Check if the book is already in the user's library
             if (user.getBooks().stream().anyMatch(book -> book.getApiId() == (bookId))) {
                 // Handle the case where the book is already in the library
-                return "redirect:/books/library?error=alreadyInLibrary";
+                return showError(model, "This book is already in the library.");
             }
 
             // Fetch book details from the external service
@@ -194,9 +194,8 @@ public class GutendexController {
             Long userId = userService.getUserId(email);
             int lastPage = gutendexService.findTheBooksLastPage(bookId, userId);
             if (lastPage < 0) {
-                return "redirect:/error";
+                return showError(model, "There is no page.");
             }
-
             Format formats = book.getFormats();
             String selectedFormat = gutendexService.prioritizeFormats(formats);
 
@@ -219,7 +218,7 @@ public class GutendexController {
                 return readContentOfTheBook(model, session, authentication);
             } else {
                 // Handle the case where no suitable format is available
-                return "books/noFormatAvailable";
+                return showError(model, "No suitable format is available.");
             }
         } else {
             // Handle the case where user is not authenticated
@@ -239,7 +238,7 @@ public class GutendexController {
             lastPage = gutendexService.findTheBooksLastPage(id, userId);
             logger.info("readContent lastPage: " + lastPage);
             if (lastPage < 0) {
-                return "redirect:/error";
+                return showError(model, "There is no page.");
             }
         } else {
             // Handle the case where user is not authenticated
@@ -268,7 +267,7 @@ public class GutendexController {
             }
 
             // Handle the case where pages or currentPageIndex is not available or index is out of bounds
-            return "books/error";
+            return showError(model,"index is out of bounds");
         }
     }
 
@@ -296,14 +295,14 @@ public class GutendexController {
         } else {
             // Log details about the error
             if (pages == null) {
-                logger.error("Error: Pages are not available in the session.");
+                return showError(model,"Error: Pages are not available in the session.");
             } else {
                 logger.error("Error: Invalid current page index or pages size exceeded. Index: " +
-                        currentPageIndex + ", Total Pages: " + (pages != null ? pages.size() : "null"));
+                        currentPageIndex + ", Total Pages: " + pages.size());
             }
 
-            // Handle the case where pages or currentPageIndex is not available or index is out of bounds
-            return "books/error";
+            return showError(model, "Error: Invalid current page index or pages size exceeded. Index: " +
+                    currentPageIndex + ", Total Pages: " + pages.size());
         }
     }
 
@@ -329,10 +328,14 @@ public class GutendexController {
 
             return "books/read";
         } else {
-            // Handle the case where there are no previous pages
-            // You may want to redirect to the first page or handle it in a way that fits your requirements
-            return "books/error";
+            return showError(model, "There is no previous page.");
         }
+    }
+
+    @GetMapping("/error")
+    public String showError(Model model, @RequestParam("message") String errorMessage) {
+        model.addAttribute("errorMessage", errorMessage);
+        return "books/error";
     }
 
     public UserDto getUserDto(String username) {

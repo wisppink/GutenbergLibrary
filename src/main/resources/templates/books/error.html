@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Error</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Page</title>
+    <!-- Add your CSS styles or link to external stylesheets here -->
 </head>
 <body>
+<div style="text-align: center; margin-top: 50px;">
+    <h2>Error</h2>
+    <p th:text="${errorMessage}"></p>
+    <!-- Add additional styling or content as needed -->
 
+    <a class="a-" th:href="@{/books/library}">Go back to library</a>
+
+    <a class="a-" th:href="@{/index}">Return to Index</a>
+</div>
 </body>
 </html>
