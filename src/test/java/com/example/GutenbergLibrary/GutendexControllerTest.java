@@ -142,9 +142,8 @@ class GutendexControllerTest {
 
         // Mock the security context to allow the method to execute without errors
         SecurityContextHolder.getContext().setAuthentication(authentication);
-
         // Test the method
-        assertEquals("redirect:/books/library", gutendexController.addToLibrary(1L, authentication));
+        assertEquals("redirect:/books/library", gutendexController.addToLibrary(model,1L, authentication));
 
         // Verify that userService.updateUserLibrary() is called
         verify(userService).updateUserLibrary(any());
@@ -175,7 +174,8 @@ class GutendexControllerTest {
         when(gutendexService.getBookDetails(anyLong())).thenReturn(mockBook);
         when(mockBook.getFormats()).thenReturn(mockFormat);
         when(gutendexService.prioritizeFormats(mockFormat)).thenReturn("pdf");
-        assertEquals("books/read", gutendexController.readTheBook(mockModel, mockSession, 1));
+        Authentication authentication = mock(Authentication.class);
+        assertEquals("books/read", gutendexController.readTheBook(mockModel, mockSession, 1,authentication));
         verify(mockSession).setAttribute(eq("bookPages"), anyList());
         verify(mockModel).addAttribute("currentPageIndex", 0);
     }
@@ -187,9 +187,9 @@ class GutendexControllerTest {
         pages.add("Test Content");
         when(session.getAttribute("bookPages")).thenReturn(pages);
         when(model.getAttribute("currentPageIndex")).thenReturn(0);
-
+        Authentication authentication = mock(Authentication.class);
         // Execution
-        String result = gutendexController.readContentOfTheBook(model, session);
+        String result = gutendexController.readContentOfTheBook(model, session,authentication);
 
         // Verification
         assertEquals("books/read", result);
@@ -208,7 +208,8 @@ class GutendexControllerTest {
         when(session.getAttribute("currentPageIndex")).thenReturn(0);
 
         // Execution
-        String result = gutendexController.nextPage(model, session);
+        Authentication authentication = mock(Authentication.class);
+        String result = gutendexController.nextPage(model, session,authentication);
 
         // Verification
         assertEquals("books/read", result);
@@ -228,7 +229,8 @@ class GutendexControllerTest {
         when(session.getAttribute("currentPageIndex")).thenReturn(1);
 
         // Execution
-        String result = gutendexController.previousPage(model, session);
+        Authentication authentication = mock(Authentication.class);
+        String result = gutendexController.previousPage(model, session,authentication);
 
         // Verification
         assertEquals("books/read", result);
